@@ -1,14 +1,12 @@
 class EmailValidator < ActiveModel::Validator
   def validate(record)
     unless valid_email_format?(record.email_address)
-      record.errors.add(:email_address, "is not a valid email format")
+      record.errors.add(:email_address, :invalid_format)
     end
 
     if email_address_with_local_name_or_alias_exist?(record.email_address)
       record.errors.add(
-        :email_address,
-        "There's already an email with this local name registered"
-      )
+        :email_address, :local_name_exist)
     end
   end
 
