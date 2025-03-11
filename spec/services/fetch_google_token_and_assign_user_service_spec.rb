@@ -85,7 +85,7 @@ RSpec.describe FetchGoogleTokenAndAssignUserService, type: :service do
             result = described_class.call(code: 'valid-code')
 
             expect(result.success?).to be_falsy
-            expect(result.error).to eq('Could not use client. Please check your credentials.')
+            expect(result.error).to eq('Não foi possível se comunicar com a aplicação cliente. Verifique suas credenciais.')
           end
         end
 
@@ -98,7 +98,7 @@ RSpec.describe FetchGoogleTokenAndAssignUserService, type: :service do
             result = described_class.call(code: 'invalid-code')
 
             expect(result.success?).to be_falsy
-            expect(result.error).to eq('Could not grant permission. Please inform valid code.')
+            expect(result.error).to eq('Não foi possível conceder permissão. Informe token válido.')
           end
         end
 
@@ -111,7 +111,7 @@ RSpec.describe FetchGoogleTokenAndAssignUserService, type: :service do
             result = described_class.call(code: 'valid-code')
 
             expect(result.success?).to be_falsy
-            expect(result.error).to eq('Mismatch redirect uri. Please check redirect uri on google client app.')
+            expect(result.error).to eq('URI de redirecionamento incompatível. Verifique URI configurada na aplicação cliente da Google.')
           end
         end
 
@@ -124,7 +124,7 @@ RSpec.describe FetchGoogleTokenAndAssignUserService, type: :service do
             result = described_class.call(code: 'valid-code')
 
             expect(result.success?).to be_falsy
-            expect(result.error).to eq('Unexpected error: something went terribly wrong')
+            expect(result.error).to eq('Um erro inesperado ocorreu: something went terribly wrong')
           end
         end
       end

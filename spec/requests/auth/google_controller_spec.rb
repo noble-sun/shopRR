@@ -67,7 +67,7 @@ RSpec.describe 'Google Auth', type: :request do
         get auth_google_callback_path, params: { code: 'valid-code', state: 'wrong-state' }
 
         expect(response).to redirect_to(new_session_path)
-        expect(flash[:notice]).to match("Sorry, could not go through the authentication. Try again.")
+        expect(flash[:notice]).to match("Não foi possível seguir com a autenticação. Tente novamente mais tarde.")
       end
     end
 
@@ -88,7 +88,7 @@ RSpec.describe 'Google Auth', type: :request do
         get auth_google_callback_path, params: { code: 'invalid-code', state: 'anti-forgery-state' }
 
         expect(response).to redirect_to(new_session_path)
-        expect(flash[:alert]).to match("Could not grant permission. Please inform valid code.")
+        expect(flash[:alert]).to match("Não foi possível conceder permissão. Informe token válido.")
       end
     end
   end
