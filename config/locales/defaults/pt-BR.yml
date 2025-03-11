@@ -1,0 +1,50 @@
+pt-BR:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "A validação falhou: %{errors}"
+        restrict_dependent_destroy:
+          has_one: "Não pode ser excluído porque existe um %{record} dependente"
+          has_many: "Não pode ser excluído porque existem %{record} dependentes"
+      full_messages:
+        format: "%{attribute} %{message}"
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: "deve ser aceito"
+      blank: "não pode ficar em branco"
+      confirmation: "não corresponde à confirmação"
+      empty: "não pode ficar vazio"
+      equal_to: "deve ser igual a %{count}"
+      even: "deve ser par"
+      exclusion: "não está disponível"
+      greater_than: "deve ser maior que %{count}"
+      greater_than_or_equal_to: "deve ser maior ou igual a %{count}"
+      inclusion: "não está incluído na lista"
+      invalid: "é inválido"
+      less_than: "deve ser menor que %{count}"
+      less_than_or_equal_to: "deve ser menor ou igual a %{count}"
+      model_invalid: "A validação falhou: %{errors}"
+      not_a_number: "não é um número"
+      not_an_integer: "deve ser um número inteiro"
+      odd: "deve ser ímpar"
+      other_than: "deve ser diferente de %{count}"
+      present: "deve estar em branco"
+      required: "é obrigatório"
+      taken: "já está em uso"
+      too_long: "é muito longo (máximo de %{count} caracteres)"
+      too_short: "é muito curto (mínimo de %{count} caracteres)"
+      wrong_length: "tamanho incorreto (deve ter %{count} caracteres)"
+    clients:
+      google:
+        client: Não foi possível se comunicar com a aplicação cliente. Verifique suas credenciais.
+        grant: Não foi possível conceder permissão. Informe token válido.
+        refresh: Token de atualizaçã́o está inválido ou expirado. Verifique sua conta da google para revogar o acesso.
+        unrevokable: Não é possível revogar acesso desta conta com token de acesso informado.
+        redirect: URI de redirecionamento incompatível. Verifique URI configurada na aplicação cliente da Google.
+        unexpected: "Um erro inesperado ocorreu: %{message}"
+  flash:
+    authentication:
+      google:
+        callback:
+          error: Não foi possível seguir com a autenticação. Tente novamente mais tarde.
