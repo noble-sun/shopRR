@@ -11,6 +11,7 @@ pt-BR:
       id_token: id token
       name: Nome
       refresh_token: Token de atualização
+      user_id: ID Usuário
     errors:
       models:
         identity_provider:
