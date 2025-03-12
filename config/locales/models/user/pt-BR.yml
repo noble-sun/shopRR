@@ -1,0 +1,31 @@
+pt-BR:
+  activerecord:
+    models:
+      user:
+        one: Usuário
+        other: Usuários
+    attributes:
+      active: Ativo
+      admin: Administrador
+      cpf: CPF
+      date_of_birth: Data de Nascimento
+      email_address: Email
+      name: Nome
+      password: Senha
+      phone: Telefone
+      surname: Sobrenome
+    errors:
+      models:
+        user:
+          attributes:
+            cpf:
+              invalid_digit: dígito verificador inválido
+            email_address:
+              invalid_format: não é um formato de email válido
+              local_name_exist: já existe um email com este nome de usuário registrado
+            password:
+              mandatory_digit: deve conter pelo menos 1 dígito
+              mandatory_lowercase: deve conter pelo menos 1 letra minúscula
+              mandatory_uppercase: deve conter pelo menos 1 letra maiúscula
+              mandatory_symbol: deve contar pelo menos 1 caractere especial
+

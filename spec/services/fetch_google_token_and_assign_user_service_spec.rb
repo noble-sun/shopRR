@@ -12,11 +12,11 @@ RSpec.describe FetchGoogleTokenAndAssignUserService, type: :service do
             "scope" => "https://www.googleapis.com/auth/userinfo.email
             https://www.googleapis.com/auth/userinfo.profile openid",
             "token_type" => "Bearer",
-            "id_token" => "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDEwNTAzMTU4MjQ4NDY
-                          1NDY0MTkiLCJlbWFpbCI6InZhbGlkLWdvb2dsZS1lbWFpbEBnbWFp
-                          bC5jb20iLCJuYW1lIjoiSGFuayBHcmVlbiIsImdpdmVuX25hbWUiO
-                          iJIYW5rIiwiZmFtaWx5X25hbWUiOiJHcmVlbiJ9.sl6z79-P6AhaO
-                          p13kQE_HppgRorm6UqHCQn8z29Bl44"
+            "id_token" => "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDEwNTAzMTU4MjQ4NDY"  \
+                          "1NDY0MTkiLCJlbWFpbCI6InZhbGlkLWdvb2dsZS1lbWFpbEBnbWFp" \
+                          "bC5jb20iLCJuYW1lIjoiSGFuayBHcmVlbiIsImdpdmVuX25hbWUiO" \
+                          "iJIYW5rIiwiZmFtaWx5X25hbWUiOiJHcmVlbiJ9.sl6z79-P6AhaO" \
+                          "p13kQE_HppgRorm6UqHCQn8z29Bl44"
           }
           allow_any_instance_of(IdentityProviders::GoogleClient)
             .to receive(:fetch_token).and_return(response_hash)
@@ -46,11 +46,11 @@ RSpec.describe FetchGoogleTokenAndAssignUserService, type: :service do
             "scope" => "https://www.googleapis.com/auth/userinfo.email
             https://www.googleapis.com/auth/userinfo.profile openid",
             "token_type" => "Bearer",
-            "id_token" => "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDEwNTAzMTU4MjQ4NDY
-                          1NDY0MTkiLCJlbWFpbCI6InZhbGlkLWdvb2dsZS1lbWFpbEBnbWFp
-                          bC5jb20iLCJuYW1lIjoiSGFuayBHcmVlbiIsImdpdmVuX25hbWUiO
-                          iJIYW5rIiwiZmFtaWx5X25hbWUiOiJHcmVlbiJ9.sl6z79-P6AhaO
-                          p13kQE_HppgRorm6UqHCQn8z29Bl44"
+            "id_token" => "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDEwNTAzMTU4MjQ4NDY"  \
+                          "1NDY0MTkiLCJlbWFpbCI6InZhbGlkLWdvb2dsZS1lbWFpbEBnbWFp" \
+                          "bC5jb20iLCJuYW1lIjoiSGFuayBHcmVlbiIsImdpdmVuX25hbWUiO" \
+                          "iJIYW5rIiwiZmFtaWx5X25hbWUiOiJHcmVlbiJ9.sl6z79-P6AhaO" \
+                          "p13kQE_HppgRorm6UqHCQn8z29Bl44"
           }
           allow_any_instance_of(IdentityProviders::GoogleClient)
             .to receive(:fetch_token).and_return(response_hash)
@@ -85,7 +85,7 @@ RSpec.describe FetchGoogleTokenAndAssignUserService, type: :service do
             result = described_class.call(code: 'valid-code')
 
             expect(result.success?).to be_falsy
-            expect(result.error).to eq('Could not use client. Please check your credentials.')
+            expect(result.error).to eq('Não foi possível se comunicar com a aplicação cliente. Verifique suas credenciais.')
           end
         end
 
@@ -98,7 +98,7 @@ RSpec.describe FetchGoogleTokenAndAssignUserService, type: :service do
             result = described_class.call(code: 'invalid-code')
 
             expect(result.success?).to be_falsy
-            expect(result.error).to eq('Could not grant permission. Please inform valid code.')
+            expect(result.error).to eq('Não foi possível conceder permissão. Informe token válido.')
           end
         end
 
@@ -111,7 +111,7 @@ RSpec.describe FetchGoogleTokenAndAssignUserService, type: :service do
             result = described_class.call(code: 'valid-code')
 
             expect(result.success?).to be_falsy
-            expect(result.error).to eq('Mismatch redirect uri. Please check redirect uri on google client app.')
+            expect(result.error).to eq('URI de redirecionamento incompatível. Verifique URI configurada na aplicação cliente da Google.')
           end
         end
 
@@ -124,7 +124,7 @@ RSpec.describe FetchGoogleTokenAndAssignUserService, type: :service do
             result = described_class.call(code: 'valid-code')
 
             expect(result.success?).to be_falsy
-            expect(result.error).to eq('Unexpected error: something went terribly wrong')
+            expect(result.error).to eq('Um erro inesperado ocorreu: something went terribly wrong')
           end
         end
       end

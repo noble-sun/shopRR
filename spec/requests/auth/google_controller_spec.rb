@@ -41,11 +41,11 @@ RSpec.describe 'Google Auth', type: :request do
           "scope" => "https://www.googleapis.com/auth/userinfo.email
             https://www.googleapis.com/auth/userinfo.profile openid",
           "token_type" => "Bearer",
-          "id_token" => "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDEwNTAzMTU4MjQ4NDY
-                        1NDY0MTkiLCJlbWFpbCI6InZhbGlkLWdvb2dsZS1lbWFpbEBnbWFp
-                        bC5jb20iLCJuYW1lIjoiSGFuayBHcmVlbiIsImdpdmVuX25hbWUiO
-                        iJIYW5rIiwiZmFtaWx5X25hbWUiOiJHcmVlbiJ9.sl6z79-P6AhaO
-                        p13kQE_HppgRorm6UqHCQn8z29Bl44"
+          "id_token" => "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDEwNTAzMTU4MjQ4NDY"  \
+                        "1NDY0MTkiLCJlbWFpbCI6InZhbGlkLWdvb2dsZS1lbWFpbEBnbWFp" \
+                        "bC5jb20iLCJuYW1lIjoiSGFuayBHcmVlbiIsImdpdmVuX25hbWUiO" \
+                        "iJIYW5rIiwiZmFtaWx5X25hbWUiOiJHcmVlbiJ9.sl6z79-P6AhaO" \
+                        "p13kQE_HppgRorm6UqHCQn8z29Bl44"
         }
         allow(oauth2_response_double).to receive(:parsed).and_return(response_hash)
 
@@ -67,7 +67,7 @@ RSpec.describe 'Google Auth', type: :request do
         get auth_google_callback_path, params: { code: 'valid-code', state: 'wrong-state' }
 
         expect(response).to redirect_to(new_session_path)
-        expect(flash[:notice]).to match("Sorry, could not go through the authentication. Try again.")
+        expect(flash[:notice]).to match("Não foi possível seguir com a autenticação. Tente novamente mais tarde.")
       end
     end
 
@@ -88,7 +88,7 @@ RSpec.describe 'Google Auth', type: :request do
         get auth_google_callback_path, params: { code: 'invalid-code', state: 'anti-forgery-state' }
 
         expect(response).to redirect_to(new_session_path)
-        expect(flash[:alert]).to match("Could not grant permission. Please inform valid code.")
+        expect(flash[:alert]).to match("Não foi possível conceder permissão. Informe token válido.")
       end
     end
   end

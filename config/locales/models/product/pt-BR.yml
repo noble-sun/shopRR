@@ -1,0 +1,16 @@
+pt-BR:
+  activerecord:
+    models:
+      product:
+        one: Produto
+        other: Produtos
+    attributes:
+      active: Ativo
+      description: Descrição
+      name: Nome
+      price: Preço
+      quantity: Quantidade
+    errors:
+      models:
+        product:
+          attributes:

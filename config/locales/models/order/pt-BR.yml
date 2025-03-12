@@ -1,0 +1,23 @@
+pt-BR:
+  activerecord:
+    models:
+      order:
+        one: Pedido
+        other: Pedidos
+    attributes:
+      address_id: ID Endereço
+      cart_id: ID Carrinho
+      user_id: ID Usuário
+      order/status:
+        pending: Pendente
+        awaiting_payment: Aguardando pagamento
+        paid: Pago
+        failed: Fracasso
+        processing: Processando
+        shipped: Enviado
+        canceled: Cancelado
+        finished: Finalizado
+    errors:
+      models:
+        order:
+          attributes:

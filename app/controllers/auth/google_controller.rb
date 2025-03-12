@@ -13,7 +13,7 @@ class Auth::GoogleController < ApplicationController
     if params[:state] != session["anti_forgery_state"]
       Rails.logger.error "state #{params[:state]} does not match anti forgery state."
 
-      redirect_to new_session_path, notice: "Sorry, could not go through the authentication. Try again."; return
+      redirect_to new_session_path, notice: I18n.t("flash.authentication.google.callback.error"); return
     end
 
     result = FetchGoogleTokenAndAssignUserService.call(code: params[:code])

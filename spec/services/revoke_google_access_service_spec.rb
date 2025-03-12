@@ -47,7 +47,7 @@ RSpec.describe RevokeGoogleAccessService, type: :service do
           result = described_class.call(user:)
 
           expect(result.success?).to be_falsy
-          expect(result.error).to eq('Could not use client. Please check your credentials.')
+          expect(result.error).to eq('Não foi possível se comunicar com a aplicação cliente. Verifique suas credenciais.')
         end
       end
 
@@ -63,7 +63,7 @@ RSpec.describe RevokeGoogleAccessService, type: :service do
           result = described_class.call(user:)
 
           expect(result.success?).to be_falsy
-          expect(result.error).to eq('Refresh token is invalid or expired. Please check your google account to revoke access.')
+          expect(result.error).to eq('Token de atualizaçã́o está inválido ou expirado. Verifique sua conta da google para revogar o acesso.')
         end
       end
 
@@ -79,7 +79,7 @@ RSpec.describe RevokeGoogleAccessService, type: :service do
           result = described_class.call(user:)
 
           expect(result.success?).to be_falsy
-          expect(result.error).to eq('Token provided could not be used to revoke access.')
+          expect(result.error).to eq('Não é possível revogar acesso desta conta com token de acesso informado.')
         end
       end
 
@@ -95,7 +95,7 @@ RSpec.describe RevokeGoogleAccessService, type: :service do
           result = described_class.call(user:)
 
           expect(result.success?).to be_falsy
-          expect(result.error).to eq('Unexpected error: a very unexpected error.')
+          expect(result.error).to eq('Um erro inesperado ocorreu: a very unexpected error.')
         end
       end
     end

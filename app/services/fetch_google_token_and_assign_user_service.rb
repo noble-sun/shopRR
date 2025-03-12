@@ -29,13 +29,13 @@ class FetchGoogleTokenAndAssignUserService < ApplicationService
 
     case error_type.to_s
     when IdentityProviders::GoogleClient::OAuthClientError.to_s
-      OpenStruct.new(success?: false, error: "Could not use client. Please check your credentials.")
+      OpenStruct.new(success?: false, error: I18n.t("errors.clients.google.client"))
     when IdentityProviders::GoogleClient::OAuthGrantError.to_s
-      OpenStruct.new(success?: false, error: "Could not grant permission. Please inform valid code.")
+      OpenStruct.new(success?: false, error: I18n.t("errors.clients.google.grant"))
     when IdentityProviders::GoogleClient::OAuthRedirectError.to_s
-      OpenStruct.new(success?: false, error: "Mismatch redirect uri. Please check redirect uri on google client app.")
+      OpenStruct.new(success?: false, error: I18n.t("errors.clients.google.redirect"))
     else
-      OpenStruct.new(success?: false, error: "Unexpected error: #{message}")
+      OpenStruct.new(success?: false, error: I18n.t("errors.clients.google.unexpected", message: message))
     end
   end
 

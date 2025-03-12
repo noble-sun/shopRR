@@ -1,0 +1,16 @@
+pt-BR:
+  activerecord:
+    models:
+      cart:
+        one: Carrinho
+        other: Carrinhos
+    attributes:
+      price_total: Preço total
+      cart/status:
+        active: Ativo
+        ordered: Pedido realizado
+      user_id: ID Usuário
+    errors:
+      models:
+        cart:
+          attributes:

@@ -39,37 +39,37 @@ RSpec.describe User, type: :model do
         it "when doesn't have a email format" do
           user = build(:user, email_address: 'invalid-email')
           user.valid?
-          expect(user.errors[:email_address]).to include('is not a valid email format')
+          expect(user.errors[:email_address]).to include('não é um formato de email válido')
         end
 
         it 'when local name start with a period' do
           user = build(:user, email_address: '.invalid@email.com')
           user.valid?
-          expect(user.errors[:email_address]).to include('is not a valid email format')
+          expect(user.errors[:email_address]).to include('não é um formato de email válido')
         end
 
         it 'when local name end with period' do
           user = build(:user, email_address: 'invalid.@email.com.br')
           user.valid?
-          expect(user.errors[:email_address]).to include('is not a valid email format')
+          expect(user.errors[:email_address]).to include('não é um formato de email válido')
         end
 
         it 'when local name has consecutive periods' do
           user = build(:user, email_address: 'invalid..email@@email.com')
           user.valid?
-          expect(user.errors[:email_address]).to include('is not a valid email format')
+          expect(user.errors[:email_address]).to include('não é um formato de email válido')
         end
 
         it 'when domain start with a hyphen' do
           user = build(:user, email_address: 'invalid@-email.com')
           user.valid?
-          expect(user.errors[:email_address]).to include('is not a valid email format')
+          expect(user.errors[:email_address]).to include('não é um formato de email válido')
         end
 
         it 'when domain end with a hyphen' do
           user = build(:user, email_address: 'invalid@email-.com')
           user.valid?
-          expect(user.errors[:email_address]).to include('is not a valid email format')
+          expect(user.errors[:email_address]).to include('não é um formato de email válido')
         end
       end
 
@@ -84,7 +84,7 @@ RSpec.describe User, type: :model do
           user = build(:user, email_address: '+invalid.email@email.com.br')
 
           user.valid?
-          expect(user.errors[:email_address]).to include("is not a valid email format")
+          expect(user.errors[:email_address]).to include("não é um formato de email válido")
         end
 
         it 'is invalid when local name email already exists' do
@@ -93,7 +93,7 @@ RSpec.describe User, type: :model do
 
           new_user.valid?
 
-          expect(new_user.errors[:email_address]).to include("There's already an email with this local name registered")
+          expect(new_user.errors[:email_address]).to include("já existe um email com este nome de usuário registrado")
         end
 
         it 'is invalid when email with alias already exists' do
@@ -102,7 +102,7 @@ RSpec.describe User, type: :model do
 
           new_user.valid?
 
-          expect(new_user.errors[:email_address]).to include("There's already an email with this local name registered")
+          expect(new_user.errors[:email_address]).to include("já existe um email com este nome de usuário registrado")
         end
       end
     end
@@ -113,14 +113,14 @@ RSpec.describe User, type: :model do
           user = build(:user, cpf: '790271230201')
 
           expect(user).to be_invalid
-          expect(user.errors[:cpf]).to include('is the wrong length (should be 11 characters)')
+          expect(user.errors[:cpf]).to include('tamanho incorreto (deve ter 11 caracteres)')
         end
 
         it "is invalid with less than 11 digits" do
           user = build(:user, cpf: '123456789')
 
           expect(user).to be_invalid
-          expect(user.errors[:cpf]).to include('is the wrong length (should be 11 characters)')
+          expect(user.errors[:cpf]).to include('tamanho incorreto (deve ter 11 caracteres)')
         end
       end
 
@@ -129,7 +129,7 @@ RSpec.describe User, type: :model do
           user = build(:user, cpf: 'invalid1234')
 
           expect(user).to be_invalid
-          expect(user.errors[:cpf]).to include('is not a number')
+          expect(user.errors[:cpf]).to include("não é um número")
         end
       end
 
@@ -138,7 +138,7 @@ RSpec.describe User, type: :model do
           user = build(:user, cpf: '79027123099')
 
           expect(user).to be_invalid
-          expect(user.errors[:cpf]).to include('invalid verification digit')
+          expect(user.errors[:cpf]).to include('dígito verificador inválido')
         end
       end
     end
@@ -149,7 +149,7 @@ RSpec.describe User, type: :model do
           user = build(:user, password: '123@Abc')
 
           expect(user).to be_invalid
-          expect(user.errors[:password]).to include('is too short (minimum is 8 characters)')
+          expect(user.errors[:password]).to include("é muito curto (mínimo de 8 caracteres)")
         end
       end
 
@@ -158,28 +158,28 @@ RSpec.describe User, type: :model do
           user = build(:user, password: 'abcd@abcasdf')
 
           expect(user).to be_invalid
-          expect(user.errors[:password]).to include('must contain at least 1 digit')
+          expect(user.errors[:password]).to include('deve conter pelo menos 1 dígito')
         end
 
         it "is invalid when there's no lowercase letters" do
           user = build(:user, password: 'ABCD@123')
 
           expect(user).to be_invalid
-          expect(user.errors[:password]).to include('must contain at least 1 lowercase letter')
+          expect(user.errors[:password]).to include('deve conter pelo menos 1 letra minúscula')
         end
 
         it "is invalid when there's no uppercase letters" do
           user = build(:user, password: 'abcd@123')
 
           expect(user).to be_invalid
-          expect(user.errors[:password]).to include('must contain at least 1 uppercase letter')
+          expect(user.errors[:password]).to include('deve conter pelo menos 1 letra maiúscula')
         end
 
         it "is invalid when there's no symbols" do
           user = build(:user, password: 'abcd123ABC')
 
           expect(user).to be_invalid
-          expect(user.errors[:password]).to include('must contain at least 1 symbol')
+          expect(user.errors[:password]).to include('deve contar pelo menos 1 caractere especial')
         end
       end
     end

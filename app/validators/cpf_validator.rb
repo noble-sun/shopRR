@@ -9,7 +9,7 @@ class CpfValidator < ActiveModel::Validator
     )
 
     unless first_verification_digit && second_verification_digit
-      record.errors.add(:cpf, "invalid verification digit")
+      record.errors.add(:cpf, :invalid_digit)
     end
   end
 

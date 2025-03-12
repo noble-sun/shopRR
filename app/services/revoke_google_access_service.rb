@@ -27,13 +27,13 @@ class RevokeGoogleAccessService < ApplicationService
 
     case error_type.to_s
     when IdentityProviders::GoogleClient::OAuthClientError.to_s
-      OpenStruct.new(success?: false, error: "Could not use client. Please check your credentials.")
+      OpenStruct.new(success?: false, error: I18n.t("errors.clients.google.client"))
     when IdentityProviders::GoogleClient::OAuthGrantError.to_s
-      OpenStruct.new(success?: false, error: "Refresh token is invalid or expired. Please check your google account to revoke access.")
+      OpenStruct.new(success?: false, error: I18n.t("errors.clients.google.refresh"))
     when IdentityProviders::GoogleClient::OAuthUnrevokableError.to_s
-      OpenStruct.new(success?: false, error: "Token provided could not be used to revoke access.")
+      OpenStruct.new(success?: false, error: I18n.t("errors.clients.google.unrevokable"))
     else
-      OpenStruct.new(success?: false, error: "Unexpected error: #{message}")
+      OpenStruct.new(success?: false, error: I18n.t("errors.clients.google.unexpected", message: message))
     end
   end
 end
