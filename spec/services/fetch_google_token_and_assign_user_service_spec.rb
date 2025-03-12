@@ -12,11 +12,11 @@ RSpec.describe FetchGoogleTokenAndAssignUserService, type: :service do
             "scope" => "https://www.googleapis.com/auth/userinfo.email
             https://www.googleapis.com/auth/userinfo.profile openid",
             "token_type" => "Bearer",
-            "id_token" => "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDEwNTAzMTU4MjQ4NDY
-                          1NDY0MTkiLCJlbWFpbCI6InZhbGlkLWdvb2dsZS1lbWFpbEBnbWFp
-                          bC5jb20iLCJuYW1lIjoiSGFuayBHcmVlbiIsImdpdmVuX25hbWUiO
-                          iJIYW5rIiwiZmFtaWx5X25hbWUiOiJHcmVlbiJ9.sl6z79-P6AhaO
-                          p13kQE_HppgRorm6UqHCQn8z29Bl44"
+            "id_token" => "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDEwNTAzMTU4MjQ4NDY"  \
+                          "1NDY0MTkiLCJlbWFpbCI6InZhbGlkLWdvb2dsZS1lbWFpbEBnbWFp" \
+                          "bC5jb20iLCJuYW1lIjoiSGFuayBHcmVlbiIsImdpdmVuX25hbWUiO" \
+                          "iJIYW5rIiwiZmFtaWx5X25hbWUiOiJHcmVlbiJ9.sl6z79-P6AhaO" \
+                          "p13kQE_HppgRorm6UqHCQn8z29Bl44"
           }
           allow_any_instance_of(IdentityProviders::GoogleClient)
             .to receive(:fetch_token).and_return(response_hash)
@@ -46,11 +46,11 @@ RSpec.describe FetchGoogleTokenAndAssignUserService, type: :service do
             "scope" => "https://www.googleapis.com/auth/userinfo.email
             https://www.googleapis.com/auth/userinfo.profile openid",
             "token_type" => "Bearer",
-            "id_token" => "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDEwNTAzMTU4MjQ4NDY
-                          1NDY0MTkiLCJlbWFpbCI6InZhbGlkLWdvb2dsZS1lbWFpbEBnbWFp
-                          bC5jb20iLCJuYW1lIjoiSGFuayBHcmVlbiIsImdpdmVuX25hbWUiO
-                          iJIYW5rIiwiZmFtaWx5X25hbWUiOiJHcmVlbiJ9.sl6z79-P6AhaO
-                          p13kQE_HppgRorm6UqHCQn8z29Bl44"
+            "id_token" => "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMDEwNTAzMTU4MjQ4NDY"  \
+                          "1NDY0MTkiLCJlbWFpbCI6InZhbGlkLWdvb2dsZS1lbWFpbEBnbWFp" \
+                          "bC5jb20iLCJuYW1lIjoiSGFuayBHcmVlbiIsImdpdmVuX25hbWUiO" \
+                          "iJIYW5rIiwiZmFtaWx5X25hbWUiOiJHcmVlbiJ9.sl6z79-P6AhaO" \
+                          "p13kQE_HppgRorm6UqHCQn8z29Bl44"
           }
           allow_any_instance_of(IdentityProviders::GoogleClient)
             .to receive(:fetch_token).and_return(response_hash)
