@@ -9,5 +9,6 @@ FactoryBot.define do
     date_of_birth { '31/12/2000' }
     active { true }
     admin { false }
+    role { 'buyer' }
   end
 end
