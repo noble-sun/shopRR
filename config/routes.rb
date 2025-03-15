@@ -3,7 +3,13 @@ Rails.application.routes.draw do
   resources :addresses
   resource :session, only: [ :new, :create, :destroy ]
   resources :passwords, param: :token
-  resources :products
+
+  resources :products, only: [ :index ]
+  get "products/:id", to: "products#show", as: "product", constraints: { id: /\d/ }
+  namespace :seller do
+    resources :products
+  end
+
   resources :registrations, only: [ :new, :create ]
   resources :carts, only: [ :show ] do
     post "remove"
