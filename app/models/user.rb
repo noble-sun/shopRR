@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :carts, dependent: :destroy
   has_many :addresses, dependent: :destroy
   has_many :orders, dependent: :destroy
+  has_many :products, dependent: :destroy
 
   has_one :identity_provider
 
@@ -29,6 +30,8 @@ class User < ApplicationRecord
       numericality: { only_integer: true }
     validates_with CpfValidator
   end
+
+  enum :role, { buyer: "buyer", seller: "seller" }
 
   def self.authenticate_by(auth)
     user = find_by("lower(email_address) = ? OR cpf = ?", auth[:login].downcase, auth[:login].gsub(/\D/, ""))
