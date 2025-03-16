@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :passwords, param: :token
 
   resources :products, only: [ :index ]
-  get "products/:id", to: "products#show", as: "product", constraints: { id: /\d/ }
+  get "products/:id", to: "products#show", as: "product", constraints: { id: /\d+/ }
   namespace :seller do
     resources :products
   end
