@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :product do
-    association :user
+    association :user, :seller
     sequence(:name) { |n| "Product #{n}" }
     sequence(:description) { |n| "Description of product #{n}" }
     quantity { 5 }
