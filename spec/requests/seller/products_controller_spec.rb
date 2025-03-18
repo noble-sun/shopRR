@@ -50,6 +50,59 @@ RSpec.describe 'Seller Products', type: :request do
     end
   end
 
+  describe 'POST /create' do
+    context 'create a new product for seller' do
+      it 'successfully' do
+        seller = create(:user, :seller)
+
+        params = {
+          product: {
+            name: "First Seller Product",
+            description: "Description first seller product",
+            quantity: 10,
+            price: 5,
+            active: true,
+            images: [
+              fixture_file_upload(
+                Rails.root.join("spec/support/images/dog.jpg"),
+                'image/jpeg'
+              )
+            ]
+          }
+        }
+
+        post session_url, params: { login: seller.email_address, password: seller.password }
+
+        expect {
+          post seller_products_path, params: params
+        }.to change(Product, :count).by(1)
+         .and change(ActiveStorage::Attachment, :count).by(1)
+
+        product = Product.last
+        expect(response).to have_http_status(:redirect)
+        expect(response).to redirect_to(seller_product_path(product))
+        expect(product.name).to eq("First Seller Product")
+
+        follow_redirect!
+        expect(response.body).to include("Product was successfully created.")
+      end
+
+      it 'return to new and do not create product on failure' do
+        seller = create(:user, :seller)
+
+        post session_url, params: { login: seller.email_address, password: seller.password }
+
+        expect {
+          post seller_products_path, params: { product: { quantity: 'ten' } }
+        }.to_not change(Product, :count)
+
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to render_template(:new)
+        expect(response.body).to include("error prohibited this product from being saved")
+      end
+    end
+  end
+
   describe 'PATCH /update' do
     context 'update seller product information' do
       it 'successfully' do
