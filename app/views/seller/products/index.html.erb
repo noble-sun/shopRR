@@ -1,9 +1,9 @@
 <%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
 <%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
 
-<% content_for :title, "Products" %>
+<% content_for :title, "Seller Products" %>
 
-<h1>Products</h1>
+<h1><%= Current.user.name %> Products</h1>
 
 <div class="container" id="products">
   <div class="row row-cols-5 justify-content-center">
@@ -14,9 +14,11 @@
         <h5 class="card-title"><%= product.name %></h5>
         <p class="card-text">R$ <%= product.price%></p>
         <a href="#" class="btn btn-primary">Add to cart</a>
-        <a href="<%= product_path(product) %>" class="card-link">Details</a>
+        <a href="<%= seller_product_path(product) %>" class="card-link">Details</a>
       </div>
     </div>
   <% end %>
   </div>
 </div>
+
+<%= link_to "New product", new_seller_product_path %>
