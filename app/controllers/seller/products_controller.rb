@@ -4,7 +4,7 @@ module Seller
     before_action :ensure_seller!
 
     def index
-      @products = Product.seller_products(Current.user)
+      @products = Product.with_attached_images.seller_products(Current.user)
     end
 
     def show; end
@@ -16,10 +16,10 @@ module Seller
     def edit; end
 
     def create
-      @product = Product.new(product_params)
+      @product = Current.user.products.new(product_params)
 
       if @product.save
-        redirect_to @product, notice: "Product was successfully created."; nil
+        redirect_to seller_product_path(@product), notice: "Product was successfully created."; nil
       else
         render :new, status: :unprocessable_entity
       end
@@ -43,7 +43,7 @@ module Seller
     private
 
     def set_product
-      @product = Product.find_by(id: params.expect(:id), user: Current.user)
+      @product = Product.with_attached_images.find_by(id: params.expect(:id), user: Current.user)
       redirect_to seller_products_path unless @product
     end
 
