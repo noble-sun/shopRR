@@ -4,7 +4,7 @@ class EmailValidator < ActiveModel::Validator
       record.errors.add(:email_address, :invalid_format)
     end
 
-    if email_address_with_local_name_or_alias_exist?(record.email_address)
+    if email_address_with_local_name_or_alias_exist?(record)
       record.errors.add(
         :email_address, :local_name_exist)
     end
@@ -84,14 +84,14 @@ class EmailValidator < ActiveModel::Validator
     domain =~ domain_regex
   end
 
-  def email_address_with_local_name_or_alias_exist?(email)
-    local, domain = email.split("@")
+  def email_address_with_local_name_or_alias_exist?(record)
+    local, domain = record.email_address.split("@")
 
     email_name, email_alias = local.split("+") if local.include?("+")
 
     user = User.where("email_address LIKE ?", "#{email_name || local}@#{domain}").or(
       User.where("email_address LIKE ?", "#{email_name || local}+%@#{domain}")
-    )
+    ).where.not(id: record.id)
 
     user.present?
   end
