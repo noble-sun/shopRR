@@ -30,6 +30,15 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul class="navbar-nav">
           <% if authenticated? %>
+            <% if Current.user.seller? %>
+              <li class="nav-item">
+                <%= button_to "My products", seller_products_path, class: "nav-link" %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= button_to "Become a seller", seller_enable_path, method: :post, class: "nav-link" %>
+              </li>
+            <% end %>
             <li class="nav-item">
               <%= button_to "Logout", session_path, method: :delete, class: "nav-link active" %>
             </li>

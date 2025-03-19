@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   resources :products, only: [ :index ]
   get "products/:id", to: "products#show", as: "product", constraints: { id: /\d+/ }
+
   namespace :seller do
+    post "enable", to: "sellers#enable", as: "enable"
     resources :products
   end
 

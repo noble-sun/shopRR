@@ -48,3 +48,7 @@ pt-BR:
       google:
         callback:
           error: Não foi possível seguir com a autenticação. Tente novamente mais tarde.
+    seller:
+      enable:
+        success: Parabéns! Agora você pode cadastrar seus produtos!
+        failure: Não foi possível habilitar a venda de produtos
