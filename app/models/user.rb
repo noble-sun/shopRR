@@ -8,7 +8,8 @@ class User < ApplicationRecord
 
   has_one :identity_provider
 
-  validates_presence_of :email_address, :password, :name, :surname
+  validates_presence_of :password, unless: -> { password_digest.present? }
+  validates_presence_of :email_address, :name, :surname
   validates :phone, numericality: { only_integer: true }, length: { is: 11 }, if: -> { phone.present? }
 
   with_options if: -> { password.present? } do
