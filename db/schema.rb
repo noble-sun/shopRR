@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_14_231613) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_20_234935) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -74,7 +74,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_14_231613) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "order_id"
+    t.index ["order_id"], name: "index_carts_on_order_id"
     t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "product_review_id", null: false
+    t.string "body", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_review_id"], name: "index_comments_on_product_review_id"
   end
 
   create_table "identity_providers", force: :cascade do |t|
@@ -95,12 +105,18 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_14_231613) do
     t.bigint "user_id", null: false
     t.bigint "address_id", null: false
     t.string "status"
-    t.bigint "cart_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["address_id"], name: "index_orders_on_address_id"
-    t.index ["cart_id"], name: "index_orders_on_cart_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "product_reviews", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.integer "score", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_product_reviews_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -148,11 +164,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_14_231613) do
   add_foreign_key "addresses", "users"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
+  add_foreign_key "carts", "orders"
   add_foreign_key "carts", "users"
+  add_foreign_key "comments", "product_reviews"
   add_foreign_key "identity_providers", "users"
   add_foreign_key "orders", "addresses"
-  add_foreign_key "orders", "carts"
   add_foreign_key "orders", "users"
+  add_foreign_key "product_reviews", "products"
   add_foreign_key "products", "users"
   add_foreign_key "sessions", "users"
 end
