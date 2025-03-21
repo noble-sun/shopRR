@@ -28,4 +28,12 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  flash:
+    product:
+      not_found: Sorry, we did not find this product
+    product_review:
+      owner: You cannot review your own product!
+      success: Thank you for your review!
+      not_ordered: You cannot review a product you did not ordered
+      invalid_range: Review must be between 1 and 10
+      unexpected: Sorry, we could not register your review right now. Please try again later!

@@ -35,6 +35,7 @@ pt-BR:
       too_long: "é muito longo (máximo de %{count} caracteres)"
       too_short: "é muito curto (mínimo de %{count} caracteres)"
       wrong_length: "tamanho incorreto (deve ter %{count} caracteres)"
+      in: "deve estar entre %{count}"
     clients:
       google:
         client: Não foi possível se comunicar com a aplicação cliente. Verifique suas credenciais.
@@ -52,3 +53,11 @@ pt-BR:
       enable:
         success: Parabéns! Agora você pode cadastrar seus produtos!
         failure: Não foi possível habilitar a venda de produtos
+    product:
+      not_found: Desculpe, não achamos o produto
+    product_review:
+      owner: Você não pode avaliar o seu próprio produto!
+      success: Obrigado pela avaliação!
+      not_ordered: Não é possível avaliar um produto que não realizou o pedido
+      invalid_range: A avaliação deve estar entre 1 e 10
+      unexpected: Desculpe, não conseguimos prosseguir com a avaliação. Por favor tente mais tarde!

@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      product:
+        one: AvaliaçãoProduto
+        other: AvaliaçõesProduto
+    attributes:
+      score: nota
+    errors:
+      models:
+        product:
+          attributes:
