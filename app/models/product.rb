@@ -1,7 +1,8 @@
 class Product < ApplicationRecord
   has_many_attached :images
   has_many :cart_items
-  has_many :carts, through: :orderables
+  has_many :product_reviews
+
   belongs_to :user
 
   validates_presence_of :name, :description, :quantity, :price
