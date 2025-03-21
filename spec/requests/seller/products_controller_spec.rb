@@ -98,7 +98,7 @@ RSpec.describe 'Seller Products', type: :request do
 
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response).to render_template(:new)
-        expect(response.body).to include("error prohibited this product from being saved")
+        expect(response.body).to include("errors prohibited this product from being saved")
       end
     end
   end

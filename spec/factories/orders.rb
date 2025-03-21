@@ -1,8 +1,7 @@
 FactoryBot.define do
   factory :order do
-    user { nil }
+    association(:user)
     address { nil }
-    status { "MyString" }
-    cart { nil }
+    status { "pending" }
   end
 end
