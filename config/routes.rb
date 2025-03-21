@@ -4,7 +4,13 @@ Rails.application.routes.draw do
   resource :session, only: [ :new, :create, :destroy ]
   resources :passwords, param: :token
 
-  resources :products, only: [ :index ]
+  resources :products, only: [ :index ] do
+    resources :product_reviews, only: [] do
+      collection do
+        post "review"
+      end
+    end
+  end
   get "products/:id", to: "products#show", as: "product", constraints: { id: /\d+/ }
 
   namespace :seller do
