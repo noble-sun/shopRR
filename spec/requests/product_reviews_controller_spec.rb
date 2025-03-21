@@ -25,6 +25,40 @@ RSpec.describe 'ProductReviews', type: :request do
           expect(response.body).to include("Obrigado pela avaliação!")
         end
 
+        context 'wiht a comment' do
+          it 'successfully' do
+            user = create(:user)
+            address = create(:address, user:)
+            product = create(:product)
+            order = create(:order, address:, user:)
+            cart = create(:cart, order:, user:)
+            cart_item = create(:cart_item, cart:, product:)
+
+            params = {
+              product_review: {
+                score: 10,
+                comments_attributes: [
+                  { body: 'Best thing i ever bought!' }
+                ]
+              }
+            }
+
+            post session_url, params: { login: user.email_address, password: user.password }
+            expect {
+            post review_product_product_reviews_path(product), params: params
+            }.to change(ProductReview, :count).by(1)
+              .and change(Comment, :count).by(1)
+
+            expect(response).to have_http_status(:redirect)
+            expect(response).to redirect_to(product_path(product))
+            expect(product.product_reviews.last.score).to eq(10)
+            expect(product.product_reviews.last.comments.last.body).to eq("Best thing i ever bought!")
+
+            follow_redirect!
+            expect(response.body).to include("Obrigado pela avaliação!")
+          end
+        end
+
         context 'when score is not within range' do
           it 'return to product page when score is less than 1' do
             user = create(:user)

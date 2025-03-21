@@ -21,7 +21,6 @@ class ProductReviewsController < ApplicationController
   rescue ActiveRecord::RecordInvalid => e
     redirect_to product_path(product), notice: I18n.t("flash.product_review.invalid_range")
   rescue => e
-    binding.pry
     Rails.logger.info e.message
     redirect_to product_path(product), notice: I18n.t("flash.product_review.unexpected")
   end
@@ -29,6 +28,6 @@ class ProductReviewsController < ApplicationController
   private
 
   def product_review_params
-    params.require(:product_review).permit(:score)
+    params.require(:product_review).permit(:score, comments_attributes: [ :id, :body, :_destroy ])
   end
 end
