@@ -16,7 +16,7 @@ class ProductReviewsController < ApplicationController
     ).exists?
 
     if order
-      product.product_reviews.create!(product_review_params)
+      product.product_reviews.create!(product_review_params.merge(user: Current.user))
       flash[:notice] = I18n.t("flash.product_review.success")
     else
       flash[:notice] = I18n.t("flash.product_review.not_ordered")
@@ -33,6 +33,6 @@ class ProductReviewsController < ApplicationController
   private
 
   def product_review_params
-    params.require(:product_review).permit(:anonymous, :score)
+    params.require(:product_review).permit(:anonymous, :score, :comment)
   end
 end

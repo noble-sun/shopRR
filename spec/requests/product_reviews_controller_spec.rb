@@ -37,7 +37,7 @@ RSpec.describe 'ProductReviews', type: :request do
             params = {
               product_review: {
                 score: 10,
-                #comment: 'Best thing i ever bought!'
+                comment: 'Best thing i ever bought!'
               }
             }
 
@@ -49,7 +49,7 @@ RSpec.describe 'ProductReviews', type: :request do
             expect(response).to have_http_status(:redirect)
             expect(response).to redirect_to(product_path(product))
             expect(product.product_reviews.last.score).to eq(10)
-            #expect(product.product_reviews.last.comment).to eq("Best thing i ever bought!")
+            expect(product.product_reviews.last.comment).to eq("Best thing i ever bought!")
 
             follow_redirect!
             expect(response.body).to include("Obrigado pela avaliação!")

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_20_234935) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_22_173430) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -108,7 +108,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_20_234935) do
     t.integer "score", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.boolean "anonymous", default: false
+    t.string "comment"
     t.index ["product_id"], name: "index_product_reviews_on_product_id"
+    t.index ["user_id"], name: "index_product_reviews_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -162,6 +166,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_20_234935) do
   add_foreign_key "orders", "addresses"
   add_foreign_key "orders", "users"
   add_foreign_key "product_reviews", "products"
+  add_foreign_key "product_reviews", "users"
   add_foreign_key "products", "users"
   add_foreign_key "sessions", "users"
 end

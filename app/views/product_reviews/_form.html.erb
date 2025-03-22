@@ -17,6 +17,11 @@
   </div>
  
   <div>
+    <%= form.label :comment, style: "display: block" %>
+    <%= form.text_area :comment %>
+  </div>
+
+  <div>
     <%= form.submit 'review' %>
   </div>
 <% end %>

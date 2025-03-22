@@ -12,6 +12,7 @@
   <% @product.product_reviews.each do |review| %>
     <div>
       <label> Score: <span> <%= review.score %> </span></label>
+      <p> <%= review.comment %> </p>
     </div>
   <% end %>
 </div>
