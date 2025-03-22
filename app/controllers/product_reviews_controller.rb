@@ -1,5 +1,11 @@
 class ProductReviewsController < ApplicationController
-  def review
+  def new
+    @product = Product.find(params.expect(:product_id))
+    @product_review = ProductReview.new
+    @product_review.comments.build
+  end
+
+  def create
     product = Product.find_by(id: params.expect(:product_id))
 
     return redirect_to products_path, notice: I18n.t("flash.product.not_found") unless product

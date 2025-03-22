@@ -1,0 +1,28 @@
+<h2> FORM PRODUCT REVIEW </h2>
+<%= form_with(model: product_review, url: product_product_reviews_path(product)) do |form| %>
+  <% if product_review.errors.any? %>
+    <div style="color: red">
+      <h2>Could not save review: </h2>
+      <ul>
+        <% product_review.errors.each do |error| %>
+          <li><%= error.full_message %>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :score, style: "display: block" %>
+    <%= form.number_field :score %>
+  </div>
+
+  <%= form.fields_for :comments do |comment_form| %>
+    <%= comment_form.label 'Comment', style: "display: block" %>
+    <%= comment_form.text_area :body %>
+  <% end %>
+
+  <div>
+    <%= form.submit 'review' %>
+  </div>
+<% end %>
+

@@ -14,7 +14,7 @@ RSpec.describe 'ProductReviews', type: :request do
 
 
           post session_url, params: { login: user.email_address, password: user.password }
-          post review_product_product_reviews_path(product), params: { product_review: { score: 9 } }
+          post product_product_reviews_path(product), params: { product_review: { score: 9 } }
 
           expect(response).to have_http_status(:redirect)
           expect(response).to redirect_to(product_path(product))
@@ -45,7 +45,7 @@ RSpec.describe 'ProductReviews', type: :request do
 
             post session_url, params: { login: user.email_address, password: user.password }
             expect {
-            post review_product_product_reviews_path(product), params: params
+            post product_product_reviews_path(product), params: params
             }.to change(ProductReview, :count).by(1)
               .and change(Comment, :count).by(1)
 
@@ -71,7 +71,7 @@ RSpec.describe 'ProductReviews', type: :request do
             post session_url, params: { login: user.email_address, password: user.password }
 
             expect {
-              post review_product_product_reviews_path(product), params: { product_review: { score: 0 } }
+              post product_product_reviews_path(product), params: { product_review: { score: 0 } }
             }.to_not change(ProductReview, :count)
 
             expect(response).to have_http_status(:redirect)
@@ -92,7 +92,7 @@ RSpec.describe 'ProductReviews', type: :request do
             post session_url, params: { login: user.email_address, password: user.password }
 
             expect {
-              post review_product_product_reviews_path(product), params: { product_review: { score: 11 } }
+              post product_product_reviews_path(product), params: { product_review: { score: 11 } }
             }.to_not change(ProductReview, :count)
 
             expect(response).to have_http_status(:redirect)
@@ -112,7 +112,7 @@ RSpec.describe 'ProductReviews', type: :request do
           post session_url, params: { login: user.email_address, password: user.password }
 
           expect {
-            post review_product_product_reviews_path(product), params: { product_review: { score: 2 } }
+            post product_product_reviews_path(product), params: { product_review: { score: 2 } }
           }.to_not change(ProductReview, :count)
 
           expect(response).to have_http_status(:redirect)
@@ -129,7 +129,7 @@ RSpec.describe 'ProductReviews', type: :request do
 
           post session_url, params: { login: user.email_address, password: user.password }
 
-          post review_product_product_reviews_path(99), params: { product_review: { score: 2 } }
+          post product_product_reviews_path(99), params: { product_review: { score: 2 } }
 
           expect(response).to have_http_status(:redirect)
           expect(response).to redirect_to(products_path)
@@ -147,7 +147,7 @@ RSpec.describe 'ProductReviews', type: :request do
 
         post session_url, params: { login: seller.email_address, password: seller.password }
 
-        post review_product_product_reviews_path(product), params: { product_review: { score: 10 } }
+        post product_product_reviews_path(product), params: { product_review: { score: 10 } }
 
         expect(response).to have_http_status(:redirect)
         expect(response).to redirect_to(products_path)
