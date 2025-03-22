@@ -37,3 +37,4 @@ en:
       not_ordered: You cannot review a product you did not ordered
       invalid_range: Review must be between 1 and 10
       unexpected: Sorry, we could not register your review right now. Please try again later!
+      already_reviewed: You cannot review the same product twice.

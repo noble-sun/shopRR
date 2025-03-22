@@ -1,3 +1,5 @@
+class AlreadyReviewedError < StandardError; end
+
 class ProductReviewsController < ApplicationController
   def new
     @product = Product.find(params.expect(:product_id))
@@ -16,6 +18,9 @@ class ProductReviewsController < ApplicationController
     ).exists?
 
     if order
+      product_review = ProductReview.find_by(user: Current.user, product:)
+      raise AlreadyReviewedError if product_review
+
       product.product_reviews.create!(product_review_params.merge(user: Current.user))
       flash[:notice] = I18n.t("flash.product_review.success")
     else
@@ -23,6 +28,8 @@ class ProductReviewsController < ApplicationController
     end
 
     redirect_to product_path(product)
+  rescue AlreadyReviewedError
+    redirect_to product_path(product), notice: I18n.t("flash.product_review.already_reviewed")
   rescue ActiveRecord::RecordInvalid => e
     redirect_to product_path(product), notice: I18n.t("flash.product_review.invalid_range")
   rescue => e

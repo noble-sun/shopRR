@@ -61,3 +61,4 @@ pt-BR:
       not_ordered: Não é possível avaliar um produto que não realizou o pedido
       invalid_range: A avaliação deve estar entre 1 e 10
       unexpected: Desculpe, não conseguimos prosseguir com a avaliação. Por favor tente mais tarde!
+      already_reviewed: Você não pode avaliar o mesmo produto mais de uma vez.

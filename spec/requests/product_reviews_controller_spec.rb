@@ -102,7 +102,26 @@ RSpec.describe 'ProductReviews', type: :request do
       end
 
       context 'when customer already reviewed the product' do
-        it 'redirect to edit the review' do
+        it 'do not allow to review again the same product' do
+          user = create(:user)
+          address = create(:address, user:)
+          product = create(:product)
+          order = create(:order, address:, user:)
+          cart = create(:cart, order:, user:)
+          cart_item = create(:cart_item, cart:, product:)
+          product_review = create(:product_review, user:, product:)
+
+          post session_url, params: { login: user.email_address, password: user.password }
+
+          expect {
+            post product_product_reviews_path(product), params: { product_review: { score: 8 } }
+          }.to_not change(ProductReview, :count)
+
+          expect(response).to have_http_status(:redirect)
+          expect(response).to redirect_to(product_path(product))
+
+          follow_redirect!
+          expect(response.body).to include("Você não pode avaliar o mesmo produto mais de uma vez.")
         end
       end
 
