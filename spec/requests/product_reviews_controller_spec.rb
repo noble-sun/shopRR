@@ -37,9 +37,7 @@ RSpec.describe 'ProductReviews', type: :request do
             params = {
               product_review: {
                 score: 10,
-                comments_attributes: [
-                  { body: 'Best thing i ever bought!' }
-                ]
+                #comment: 'Best thing i ever bought!'
               }
             }
 
@@ -47,12 +45,11 @@ RSpec.describe 'ProductReviews', type: :request do
             expect {
             post product_product_reviews_path(product), params: params
             }.to change(ProductReview, :count).by(1)
-              .and change(Comment, :count).by(1)
 
             expect(response).to have_http_status(:redirect)
             expect(response).to redirect_to(product_path(product))
             expect(product.product_reviews.last.score).to eq(10)
-            expect(product.product_reviews.last.comments.last.body).to eq("Best thing i ever bought!")
+            #expect(product.product_reviews.last.comment).to eq("Best thing i ever bought!")
 
             follow_redirect!
             expect(response.body).to include("Obrigado pela avaliação!")
@@ -101,6 +98,11 @@ RSpec.describe 'ProductReviews', type: :request do
             follow_redirect!
             expect(response.body).to include("A avaliação deve estar entre 1 e 10")
           end
+        end
+      end
+
+      context 'when customer already reviewed the product' do
+        it 'redirect to edit the review' do
         end
       end
 

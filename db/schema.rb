@@ -79,14 +79,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_20_234935) do
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.bigint "product_review_id", null: false
-    t.string "body", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["product_review_id"], name: "index_comments_on_product_review_id"
-  end
-
   create_table "identity_providers", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name", null: false
@@ -166,7 +158,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_20_234935) do
   add_foreign_key "cart_items", "products"
   add_foreign_key "carts", "orders"
   add_foreign_key "carts", "users"
-  add_foreign_key "comments", "product_reviews"
   add_foreign_key "identity_providers", "users"
   add_foreign_key "orders", "addresses"
   add_foreign_key "orders", "users"

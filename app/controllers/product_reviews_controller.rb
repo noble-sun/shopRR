@@ -2,7 +2,6 @@ class ProductReviewsController < ApplicationController
   def new
     @product = Product.find(params.expect(:product_id))
     @product_review = ProductReview.new
-    @product_review.comments.build
   end
 
   def create
@@ -34,6 +33,6 @@ class ProductReviewsController < ApplicationController
   private
 
   def product_review_params
-    params.require(:product_review).permit(:score, comments_attributes: [ :id, :body, :_destroy ])
+    params.require(:product_review).permit(:anonymous, :score)
   end
 end

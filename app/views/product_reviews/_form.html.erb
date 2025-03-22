@@ -15,12 +15,7 @@
     <%= form.label :score, style: "display: block" %>
     <%= form.number_field :score %>
   </div>
-
-  <%= form.fields_for :comments do |comment_form| %>
-    <%= comment_form.label 'Comment', style: "display: block" %>
-    <%= comment_form.text_area :body %>
-  <% end %>
-
+ 
   <div>
     <%= form.submit 'review' %>
   </div>
