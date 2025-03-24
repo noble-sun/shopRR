@@ -30,7 +30,7 @@ Product.create!(user:, name: "Dog", description: "A baby dog", quantity: 10, pri
 end
 
 require "#{Rails.root.join("spec/support/factory_helpers")}"
-user = User.create!(
+buyer = User.create!(
   email_address: 'buyer@email.com',
   cpf: FactoryHelpers.generate_cpf,
   password: 'Senha@123',
@@ -41,4 +41,16 @@ user = User.create!(
   active: true,
   admin: false,
   role: :buyer
+)
+
+address = Address.create!(
+  user: buyer,
+  street: "St. One",
+  number: 101,
+  neighborhood: "Frontier",
+  city: "Alterna",
+  state: "Arabakia",
+  zipcode: "1000010",
+  country: "Grimgar",
+  primary_address: true
 )
