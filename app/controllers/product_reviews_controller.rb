@@ -1,6 +1,8 @@
 class AlreadyReviewedError < StandardError; end
 
 class ProductReviewsController < ApplicationController
+  before_action :set_product_review, only: [ :show, :edit, :update ]
+
   def new
     @product = Product.find(params.expect(:product_id))
     @product_review = ProductReview.new
@@ -37,9 +39,32 @@ class ProductReviewsController < ApplicationController
     redirect_to product_path(product), notice: I18n.t("flash.product_review.unexpected")
   end
 
+  def edit
+  end
+
+  def update
+    if @product_review.update(product_review_params)
+      redirect_to product_product_review_path(@product, @product_review),
+        notice: I18n.t("flash.product_review.updated.successfully")
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def product_review_params
     params.require(:product_review).permit(:anonymous, :score, :comment)
+  end
+
+  def set_product_review
+    @product = Product.find(params.expect(:product_id))
+    @product_review = ProductReview.find_by(
+      id: params.expect(:id),
+      product_id: @product,
+      user: Current.user
+    )
+
+    redirect_to product_path(@product) unless @product_review
   end
 end
