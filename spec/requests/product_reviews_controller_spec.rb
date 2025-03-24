@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'ProductReviews', type: :request do
-  describe 'POST /review' do
+  describe 'POST /create' do
     context 'review a product' do
       context 'when a customer has an order with this product' do
         it 'sucessfully' do
@@ -175,6 +175,125 @@ RSpec.describe 'ProductReviews', type: :request do
 
         follow_redirect!
         expect(response.body).to include("Você não pode avaliar o seu próprio produto!")
+      end
+    end
+  end
+
+  describe 'PUT /update' do
+    context 'when updating a review' do
+      context 'when the customer is the owner of the review' do
+        it 'successfully update the review' do
+          user = create(:user)
+          address = create(:address, user:)
+          product = create(:product)
+          order = create(:order, address:, user:)
+          cart = create(:cart, order:, user:)
+          cart_item = create(:cart_item, cart:, product:)
+          product_review = create(:product_review, user:, product:, score: 10, comment: "Best thing i bought!")
+
+          params = {
+            product_review: {
+              score: 8,
+              comment: 'updated comment review'
+            }
+          }
+
+          post session_url, params: { login: user.email_address, password: user.password }
+
+          expect {
+            put product_product_review_path(product, product_review), params: params
+          }.to_not change(ProductReview, :count)
+
+          expect(response).to have_http_status(:redirect)
+          expect(response).to redirect_to(product_product_review_path(product, product_review))
+          expect(product_review.reload.score).to eq(8)
+          expect(product_review.reload.comment).to eq('updated comment review')
+        end
+
+        context 'when the review score is not within the accepted range' do
+          it 'does not update review when score is bellow 1' do
+            user = create(:user)
+            address = create(:address, user:)
+            product = create(:product)
+            order = create(:order, address:, user:)
+            cart = create(:cart, order:, user:)
+            cart_item = create(:cart_item, cart:, product:)
+            product_review = create(:product_review, user:, product:, score: 10, comment: "Best thing i bought!")
+
+            params = {
+              product_review: {
+                score: -1,
+                comment: 'It could not be wrost than this'
+              }
+            }
+
+            post session_url, params: { login: user.email_address, password: user.password }
+
+            expect {
+              put product_product_review_path(product, product_review), params: params
+            }.to_not change(ProductReview, :count)
+
+            expect(response).to have_http_status(:unprocessable_entity)
+            expect(response).to render_template(:edit)
+            expect(product_review.reload.score).to_not eq(-1)
+            expect(product_review.reload.comment).to_not eq('It could not be wrost than this')
+          end
+
+          it 'does not update review when score is above 10' do
+            user = create(:user)
+            address = create(:address, user:)
+            product = create(:product)
+            order = create(:order, address:, user:)
+            cart = create(:cart, order:, user:)
+            cart_item = create(:cart_item, cart:, product:)
+            product_review = create(:product_review, user:, product:, score: 10, comment: "Best thing i bought!")
+
+            params = {
+              product_review: {
+                score: 11,
+                comment: '11 out of 10!'
+              }
+            }
+
+            post session_url, params: { login: user.email_address, password: user.password }
+
+            expect {
+              put product_product_review_path(product, product_review), params: params
+            }.to_not change(ProductReview, :count)
+
+            expect(response).to have_http_status(:unprocessable_entity)
+            expect(response).to render_template(:edit)
+            expect(product_review.reload.score).to_not eq(11)
+            expect(product_review.reload.comment).to_not eq('11 out of 10!')
+          end
+        end
+      end
+
+      context 'when the review is not from the customer' do
+        it 'does not update review' do
+          user = create(:user)
+          address = create(:address, user:)
+          product = create(:product)
+          order = create(:order, address:, user:)
+          cart = create(:cart, order:, user:)
+          cart_item = create(:cart_item, cart:, product:)
+          product_review = create(:product_review, user:, product:)
+          logged_user = create(:user)
+
+          params = {
+            product_review: {
+              score: 10,
+              comment: '10 out of 10!'
+            }
+          }
+          post session_url, params: { login: logged_user.email_address, password: logged_user.password }
+
+          expect {
+            put product_product_review_path(product, product_review), params: params
+          }.to_not change(ProductReview, :count)
+          expect(response).to have_http_status(:redirect)
+          expect(response).to redirect_to(product_path(product))
+        end
       end
     end
   end
