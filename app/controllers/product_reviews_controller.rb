@@ -3,6 +3,10 @@ class AlreadyReviewedError < StandardError; end
 class ProductReviewsController < ApplicationController
   before_action :set_product_review, only: [ :show, :edit, :update ]
 
+  def reviews
+    @product_reviews = ProductReview.where(user: Current.user)
+  end
+
   def new
     @product = Product.find(params.expect(:product_id))
     @product_review = ProductReview.new

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :products, only: [ :index ] do
     resources :product_reviews, only: [ :new, :create, :show, :edit, :update ]
   end
+  get "reviews", to: "product_reviews#reviews"
   get "products/:id", to: "products#show", as: "product", constraints: { id: /\d+/ }
 
   namespace :seller do
