@@ -1,6 +1,28 @@
 require 'rails_helper'
 
 RSpec.describe 'ProductReviews', type: :request do
+  describe 'GET /reviews' do
+    context 'list all reviews the user gave' do
+      it 'successfully' do
+        user = create(:user)
+        address = create(:address, user:)
+        product = create(:product, name: 'Water')
+        order = create(:order, address:, user:)
+        cart = create(:cart, order:, user:)
+        cart_item = create(:cart_item, cart:, product:)
+        product_review = create(:product_review, user:, product:, score: 10, comment: "Would for sure drink again")
+        review_from_another_user = create(:product_review, score: 3, comment: "Did not work")
+
+        post session_url, params: { login: user.email_address, password: user.password }
+
+        get reviews_path
+
+        expect(response.body).to include('Water', 'Would for sure drink again')
+        expect(response.body).to_not include('Taste like nothing')
+      end
+    end
+  end
+
   describe 'POST /create' do
     context 'review a product' do
       context 'when a customer has an order with this product' do
