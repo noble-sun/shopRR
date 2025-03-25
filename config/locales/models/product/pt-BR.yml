@@ -5,11 +5,12 @@ pt-BR:
         one: Produto
         other: Produtos
     attributes:
-      active: Ativo
-      description: Descrição
-      name: Nome
-      price: Preço
-      quantity: Quantidade
+      product:
+        active: Ativo
+        description: Descrição
+        name: Nome
+        price: Preço
+        quantity: Quantidade
     errors:
       models:
         product:

@@ -5,15 +5,16 @@ pt-BR:
         one: Usuário
         other: Usuários
     attributes:
-      active: Ativo
-      admin: Administrador
-      cpf: CPF
-      date_of_birth: Data de Nascimento
-      email_address: Email
-      name: Nome
-      password: Senha
-      phone: Telefone
-      surname: Sobrenome
+      user:
+        active: Ativo
+        admin: Administrador
+        cpf: CPF
+        date_of_birth: Data de Nascimento
+        email_address: Email
+        name: Nome
+        password: Senha
+        phone: Telefone
+        surname: Sobrenome
     errors:
       models:
         user:

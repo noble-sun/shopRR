@@ -5,10 +5,11 @@ pt-BR:
         one: Item do carrinho
         other: Itens do carrinho
     attributes:
-      cart_id: ID Carrinho
-      quantity: Quantidade
-      price: Preço
-      product_id: ID Produto
+      cart_item:
+        cart_id: ID Carrinho
+        quantity: Quantidade
+        price: Preço
+        product_id: ID Produto
     errors:
       models:
         cart_item:

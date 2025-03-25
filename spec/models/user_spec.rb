@@ -148,6 +148,7 @@ RSpec.describe User, type: :model do
         it 'is invalid when has less than 8 characters' do
           user = build(:user, password: '123@Abc')
 
+          binding.pry
           expect(user).to be_invalid
           expect(user.errors[:password]).to include("é muito curto (mínimo de 8 caracteres)")
         end
