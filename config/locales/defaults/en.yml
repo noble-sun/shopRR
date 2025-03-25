@@ -28,7 +28,24 @@
 #       enabled: "ON"
 
 en:
+  errors:
+    clients:
+      google:
+        client: It was not possible to reach client app. Verify your credentials.
+        grant: Could not grant permission. Please inform valid token.
+        refresh: Refresh token invalid or expired. Go to your google account to revoke access.
+        unrevokable: Could not revoke access with the token informed.
+        redirect: Mismatched redirect uri. Verify redirect uri in your Google client app.
+        unexpected: "An unexpected error occured: %{message}"
   flash:
+    authentication:
+      google:
+        callback:
+          error: It was not possible to authenticate. Please try again later.
+    seller:
+      enable:
+        success: Congratulations! You can now create your products!
+        failure: It was not possible to enable your seller status
     product:
       not_found: Sorry, we did not find this product
     product_review:
@@ -38,3 +55,5 @@ en:
       invalid_range: Review must be between 1 and 10
       unexpected: Sorry, we could not register your review right now. Please try again later!
       already_reviewed: You cannot review the same product twice.
+      updated:
+        successfully: Review updated successfully!
