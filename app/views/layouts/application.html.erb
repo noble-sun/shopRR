@@ -26,7 +26,7 @@
   <body class="bg-secondary min-vh-100">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/">e-Shop</a>
+        <a class="navbar-brand" href="<%= root_path %>">e-Shop</a>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul class="navbar-nav">
           <% if authenticated? %>
@@ -41,6 +41,12 @@
             <% end %>
             <li class="nav-item">
               <%= button_to "Logout", session_path, method: :delete, class: "nav-link active" %>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<%= url_for(locale: :en) %>">English</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<%= url_for(locale: 'pt-BR') %>">Portuguese</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="<%= reviews_path %>">Your Reviews</a>
