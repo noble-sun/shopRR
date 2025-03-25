@@ -52,8 +52,11 @@ A online ***Shop*** made with ***R***uby on ***R***ails.
         ```bash
         http://localhost:300
         ```
-        - You can either create a new user or login with Google, or use the pre-existing user below:
+        - You can either create a new user or login with Google, or use the pre-existing users below:
             ```bash
+            email: buyer@email.com
+            password: Senha@123
+            
             email: seller@email.com
             password: Senha@123
             ```
@@ -61,7 +64,7 @@ A online ***Shop*** made with ***R***uby on ***R***ails.
 # Tests
 To run the test enter the container:
 ```bash
-    docker compose run --rm --service-ports web bash
+docker compose run --rm --service-ports web bash
 ```
 
 Execute the command to run all tests:
@@ -79,6 +82,6 @@ rspec
 - [ ] Product categories
 - [ ] Product sizes
 - [ ] Product variations
-- [ ] Product review and comments
-
+- [x] Product review and comments
+- [ ] Language selection
 ---

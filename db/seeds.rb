@@ -28,3 +28,29 @@ end
 Product.create!(user:, name: "Dog", description: "A baby dog", quantity: 10, price: 0.1).tap do |product|
   product.images.attach(io: File.open("#{Rails.root}/spec/support/images/dog.jpg"), filename: 'a cat')
 end
+
+require "#{Rails.root.join("spec/support/factory_helpers")}"
+buyer = User.create!(
+  email_address: 'buyer@email.com',
+  cpf: FactoryHelpers.generate_cpf,
+  password: 'Senha@123',
+  name: 'Merry',
+  surname: 'Kakimiya',
+  phone: '11987654321',
+  date_of_birth: '31/12/1999',
+  active: true,
+  admin: false,
+  role: :buyer
+)
+
+address = Address.create!(
+  user: buyer,
+  street: "St. One",
+  number: 101,
+  neighborhood: "Frontier",
+  city: "Alterna",
+  state: "Arabakia",
+  zipcode: "1000010",
+  country: "Grimgar",
+  primary_address: true
+)

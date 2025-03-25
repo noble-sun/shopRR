@@ -2,6 +2,25 @@
 
 <%= render @product %>
 
+
+<div>
+  <%= link_to "Review product", new_product_product_review_path(@product) %>
+</div>
+
+<% if @product.product_reviews.exists? %>
+<div>
+  <% @product.product_reviews.each do |review| %>
+    <div>
+      <label> Score: <span> <%= review.score %> </span></label>
+      <p> <%= review.comment %> </p>
+
+      <% if Current.user == review.user %>
+        <%= link_to "edit comment", edit_product_product_review_path(@product, review), method: :patch %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<% end %>
 <div>
   <%= link_to "Back to products", products_path %>
 </div>

@@ -1,0 +1,11 @@
+<% content_for :title, "Editing Review" %>
+
+<h1>Editing review of <%= @product.name %></h1>
+
+<%= render "form", product: @product, product_review: @product_review %>
+
+<br>
+
+<div>
+  <%= link_to "Show this product", product_path(@product) %>
+</div>

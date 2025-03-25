@@ -1,0 +1,27 @@
+<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
+<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+
+<% content_for :title, "Your Reviews" %>
+
+<h1>Your Reviews</h1>
+
+<div class="container">
+  <% @product_reviews.each do |review| %>
+    <div>
+      <p>
+        <strong>Product: </strong>
+        <%= review.product.name %>
+      </p>
+
+      <p>
+        <strong>Review: </strong>
+        <%= review.score %>
+      </p>
+
+      <p>
+        <strong>Comment: </strong>
+        <%= review.comment %>
+      </p>
+    </div>
+  <% end %>
+</div>

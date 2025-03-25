@@ -43,6 +43,9 @@
               <%= button_to "Logout", session_path, method: :delete, class: "nav-link active" %>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="<%= reviews_path %>">Your Reviews</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="<%= orders_path %>">Orders</a>
             </li>
             <li class="nav-item">
