@@ -15,7 +15,7 @@ class CartItem < ApplicationRecord
 
   def stock_availabillity
     if product && (quantity > product.quantity)
-      errors.add(:quantity, "insufficient for this product")
+      errors.add(:quantity, :insufficient)
     end
   end
 

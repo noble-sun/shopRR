@@ -1,0 +1,18 @@
+en:
+  activerecord:
+    models:
+      cart_item:
+        one: Cart Item
+        other: Cart Items
+    attributes:
+      cart_item:
+        cart_id: Cart ID
+        quantity: Quantity
+        price: Price
+        product_id: Product ID
+    errors:
+      models:
+        cart_item:
+          attributes:
+            quantity:
+              insufficient: insufficient for this product

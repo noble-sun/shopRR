@@ -14,3 +14,5 @@ pt-BR:
       models:
         cart_item:
           attributes:
+            quantity:
+              insufficient: insuficiente para este produto
