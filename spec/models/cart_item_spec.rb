@@ -18,7 +18,7 @@ RSpec.describe CartItem, type: :model do
       item = described_class.new(cart: cart, product: product, quantity: 3)
 
       item.valid?
-      expect(item.errors.full_messages.to_sentence).to eq('Quantity insufficient for this product')
+      expect(item.errors.full_messages.to_sentence).to eq('Quantidade insuficiente para este produto')
     end
   end
 

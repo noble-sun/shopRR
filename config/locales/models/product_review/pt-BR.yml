@@ -5,7 +5,9 @@ pt-BR:
         one: AvaliaçãoProduto
         other: AvaliaçõesProduto
     attributes:
-      score: nota
+      product:
+        score: nota
+        comment: comentário
     errors:
       models:
         product:

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  scope "(:locale)", locale: /pt-BR|en/ do
   resources :orders, only: [ :new, :create, :index ]
   resources :addresses
   resource :session, only: [ :new, :create, :destroy ]
@@ -28,6 +29,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # Defines the root path route ("/")
+  root "products#index"
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -38,6 +42,8 @@ Rails.application.routes.draw do
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
-  # Defines the root path route ("/")
-  root "products#index"
+  get "/", to: redirect { |params, req|
+    locale = req.session[:locale] || I18n.default_locale
+    "/#{locale}"
+  }
 end

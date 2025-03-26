@@ -5,13 +5,14 @@ pt-BR:
         one: Provedor de Identidade
         other: Provedores de Identidade
     attributes:
-      access_token: Token de acesso
-      account_identitfiers: Idendificador da conta
-      expires_in: Expira em
-      id_token: id token
-      name: Nome
-      refresh_token: Token de atualização
-      user_id: ID Usuário
+      identity_provider:
+        access_token: Token de acesso
+        account_identitfiers: Idendificador da conta
+        expires_in: Expira em
+        id_token: id token
+        name: Nome
+        refresh_token: Token de atualização
+        user_id: ID Usuário
     errors:
       models:
         identity_provider:

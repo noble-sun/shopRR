@@ -1,0 +1,25 @@
+pt-BR:
+  activerecord:
+    attributes:
+      user:
+        cpf: CPF
+        date_of_birth: Date of birth
+        email_address: Email
+        user/role:
+          buyer: Customer
+          seller: Seller
+    errors:
+      models:
+        user:
+          attributes:
+            cpf:
+              invalid_digit: verifying digit invalid
+            email_address:
+              invalid_format: not a valid email format
+              local_name_exist: already exist with this local name
+            password:
+              mandatory_digit: has to contain at least 1 digit
+              mandatory_lowercase: has to contain at least 1 lowercase letter
+              mandatory_uppercase: has to contain at least 1 uppercase letter
+              mandatory_symbol: has to contain at least 1 special character
+
