@@ -1,6 +1,28 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 
-.body-height {
+.app-body {
   min-height: calc(100vh - 56px);
+  max-width: 1440px;
+}
+
+.side-banner {
+  max-width: 875px;
+  height: 100vh;
+}
+
+.login {
+  width: 445px;
+  margin: 16px;
+}
+
+.form-label {
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.form-input {
+  height: 56px;
+  font-size: 1rem;
+  padding: 0 16px;
 }
