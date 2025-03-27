@@ -39,6 +39,7 @@ en:
         unexpected: "An unexpected error occured: %{message}"
   flash:
     authentication:
+      wrong_credentials: Wrong login or password
       google:
         callback:
           error: It was not possible to authenticate. Please try again later.

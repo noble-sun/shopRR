@@ -46,6 +46,7 @@ pt-BR:
         unexpected: "Um erro inesperado ocorreu: %{message}"
   flash:
     authentication:
+      wrong_credentials: Login ou senha incorretos.
       google:
         callback:
           error: Não foi possível seguir com a autenticação. Tente novamente mais tarde.

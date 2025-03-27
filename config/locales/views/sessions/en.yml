@@ -1,0 +1,14 @@
+en:
+  title: Welcome
+  subtitle: Please login here
+  placeholders:
+    login: Input your email or CPF here
+    password: Input your password here
+  labels:
+    login: Email address or CPF
+    password: Password
+  buttons:
+    sign_in: Login
+    sign_in_google: Login with Google
+    forgot_password: Forgot password?
+    create_account: Register
