@@ -24,47 +24,8 @@
   </head>
 
   <body class="bg-secondary min-vh-100">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="<%= root_path %>">e-Shop</a>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-          <ul class="navbar-nav">
-          <% if authenticated? %>
-            <% if Current.user.seller? %>
-              <li class="nav-item">
-                <%= button_to "My products", seller_products_path, class: "nav-link" %>
-              </li>
-            <% else %>
-              <li class="nav-item">
-                <%= button_to "Become a seller", seller_enable_path, method: :post, class: "nav-link" %>
-              </li>
-            <% end %>
-            <li class="nav-item">
-              <%= button_to "Logout", session_path, method: :delete, class: "nav-link active" %>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<%= url_for(locale: :en) %>">English</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<%= url_for(locale: 'pt-BR') %>">Portuguese</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<%= reviews_path %>">Your Reviews</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<%= orders_path %>">Orders</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<%= cart_path(Current.user.active_cart) %>">Cart</a>
-            </li>
-          <% else %>
-            <a class="nav-link active" aria-current="page" href="<%= new_session_path %>">Login</a>
-          <% end %>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <div class="container body-height bg-light">
+    <div class="container app-body p-0 bg-light">
+      <%= render 'layouts/menu' unless controller_name == 'sessions' && action_name == 'new' %>
       <%= yield %>
     </div>
   </body>
