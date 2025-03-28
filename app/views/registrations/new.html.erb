@@ -50,7 +50,6 @@
       <div class="d-flex flex-column mb-3 ml-3">
         <%= form.label :date_of_birth, I18n.t('.registrations.labels.date_of_birth'), class:"form-label" %>
         <%= form.text_field :date_of_birth,
-          autocomplete: "date_of_birth",
           placeholder: I18n.t('.registrations.placeholders.date_of_birth'),
           value: params[:date_of_birth],
           class: "rounded-3 form-input border border-black w-100"
@@ -62,7 +61,7 @@
       <%= form.label :email_address, I18n.t('.registrations.labels.email_address'), class:"form-label" %>
       <%= form.email_field :email_address,
         required: true,
-        autocomplete: "email_address",
+        autocomplete: "email",
         placeholder: I18n.t('.registrations.placeholders.email_address'),
         value: params[:email_address],
         class: "flex-fill rounded-3 form-input border border-black"
@@ -73,7 +72,6 @@
       <%= form.label :cpf, I18n.t('.registrations.labels.cpf'), class:"form-label" %>
       <%= form.text_field :cpf,
         required: true,
-        autocomplete: "cpf",
         placeholder: I18n.t('.registrations.placeholders.cpf'),
         value: params[:cpf],
         class: "flex-fill rounded-3 form-input border border-black"
