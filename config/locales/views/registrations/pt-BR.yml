@@ -1,0 +1,22 @@
+pt-BR:
+  registrations:
+    title: Crie uma Nova Conta
+    subtitle: Por favor entre os detalhes
+    placeholders:
+      email_address: Informe seu email
+      cpf: ___.___.___-__
+      password: Crie sua senha
+      name: Informe seu nome
+      surname: Informe seu sobrenome
+      phone: '99 99999-9999'
+      date_of_birth: dd/mm/aaaa
+    labels:
+      email_address: Email*
+      cpf: CPF*
+      password: Senha*
+      name: Nome*
+      surname: Sobrenome*
+      phone: Telefone
+      date_of_birth: Data de Nascimento
+    buttons:
+      sign_up: Criar Conta
