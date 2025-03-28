@@ -26,3 +26,13 @@
   font-size: 1rem;
   padding: 0 16px;
 }
+
+.back-arrow {
+  display: block;
+  height: 12px;
+  width: 12px;
+  border-left: 2px solid black;
+  border-top: 2px solid black;
+  border-radius: 2px;
+  rotate: 315deg;
+}
