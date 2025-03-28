@@ -1,8 +1,36 @@
-<h1>Forgot your password?</h1>
+<div class="login">
+  <%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
+  <a href="<%= new_session_path %>"
+    class="d-flex align-items-center mb-3 link-dark link-underline-opacity-0"
+  >
+    <span class="back-arrow"></span>
+    <span class="fs-6 ms-2">
+      <%= I18n.t('.passwords.back') %>
+    </span>
+  </a>
 
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
+  <div class="mb-4">
+    <h1 class="fw-bold fs-2"> <%= I18n.t('.passwords.title') %> </h1>
+    <h2 class="fs-6 text-secondary"> <%= I18n.t('.passwords.subtitle') %> </h2>
+  </div>
 
-<%= form_with url: passwords_path do |form| %>
-  <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %><br>
-  <%= form.submit "Email reset instructions" %>
-<% end %>
+  <%= form_with url: passwords_path do |form| %>
+    <div class="d-flex flex-column mb-3">
+      <%= form.label :email_address, I18n.t('.passwords.labels.email_address'), class:"form-label" %>
+      <%= form.email_field :email_address,
+        required: true,
+        autofocus: true,
+        autocomplete: "email",
+        placeholder: I18n.t('.passwords.placeholders.email_address'),
+        value: params[:email_address],
+        class: "flex-fill rounded-3 form-input border border-black"
+      %>
+    </div>
+
+    <div class="d-flex flex-column mt-4">
+      <%= form.submit I18n.t('.passwords.buttons.email_recovery'),
+        class: "btn btn-dark", style:"height:56px;"
+      %>
+    </div>
+  <% end %>
+</div>

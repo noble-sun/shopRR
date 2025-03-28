@@ -1,0 +1,11 @@
+pt-BR:
+  passwords:
+    back: Voltar
+    title: Esqueceu a Senha?
+    subtitle: Entre seu endereço de email cadastrado. Nós vamos enviar um email para recuperação de senha.
+    placeholders:
+      email_address: Entre seu endereço de email
+    labels:
+      email_address: Email
+    buttons:
+      email_recovery: Recuperar Senha

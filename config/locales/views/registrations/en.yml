@@ -1,0 +1,22 @@
+en:
+  registrations:
+    title: Create New Account
+    subtitle: Please enter details
+    placeholders:
+      email_address: Inform you email
+      cpf: ___.___.___-__
+      password: Create your password
+      name: Inform your name
+      surname: Inform your surname
+      phone: '99 99999-9999'
+      date_of_birth: mm/dd/yyyy
+    labels:
+      email_address: Email*
+      cpf: CPF*
+      password: Password*
+      name: Name*
+      surname: Surname*
+      phone: Phone
+      date_of_birth: Date of Birth
+    buttons:
+      sign_up: Create Account

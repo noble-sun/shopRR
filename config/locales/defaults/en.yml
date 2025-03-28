@@ -39,6 +39,7 @@ en:
         unexpected: "An unexpected error occured: %{message}"
   flash:
     authentication:
+      wrong_credentials: Wrong login or password
       google:
         callback:
           error: It was not possible to authenticate. Please try again later.
@@ -46,6 +47,11 @@ en:
       enable:
         success: Congratulations! You can now create your products!
         failure: It was not possible to enable your seller status
+    password:
+      create: Password reset instructions sent (if user with that email address exists).
+      successfully_reset: Password has been reset.
+      mismatched_password_confirmation: Passwords did not match.
+      invalid_reset_link: Password reset link is invalid or has expired.
     product:
       not_found: Sorry, we did not find this product
     product_review:

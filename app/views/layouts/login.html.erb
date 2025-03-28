@@ -25,8 +25,15 @@
 
   <body class="bg-secondary min-vh-100">
     <div class="container app-body p-0 bg-light">
-      <%= render 'layouts/menu' unless controller_name == 'sessions' && action_name == 'new' %>
-      <%= yield %>
+      <div class="d-flex flex-row m-0 p-0 vh-100">
+        <section class="p-0 flex-grow-1 d-flex" style="max-width:875px;">
+          <%= image_tag 'login-banner.jpg', class:"object-fit-cover side-banner w-100" %>
+        </section>
+
+        <main class="d-flex align-items-center justify-content-center flex-grow-1" style="width: auto;">
+          <%= yield %>
+        </main>
+      </div>
     </div>
   </body>
 </html>
