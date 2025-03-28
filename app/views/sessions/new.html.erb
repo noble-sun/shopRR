@@ -1,45 +1,39 @@
-<div class=" d-flex flex-row m-0 p-0 vh-100">
-  <section class="p-0 flex-grow-1 d-flex" style="max-width:875px;">
-    <%= image_tag 'login-banner.jpg', class:"object-fit-cover side-banner w-100" %>
-  </section>
-
-  <main class="d-flex align-items-center justify-content-center flex-grow-1" style="width: auto;">
     <div class="login">
       <%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
       <%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
 
       <div class="mb-4">
-        <h1 class="fw-bold fs-2"> <%= I18n.t('.title') %> </h1>
-        <h2 class="fs-6 text-secondary"> <%= I18n.t('.subtitle') %> </h2>
+        <h1 class="fw-bold fs-2"> <%= I18n.t('.sessions.title') %> </h1>
+        <h2 class="fs-6 text-secondary"> <%= I18n.t('.sessions.subtitle') %> </h2>
       </div>
 
       <%= form_with url: session_path, class: "d-flex flex-column" do |form| %>
 
         <div class="d-flex flex-column mb-3">
-          <%= form.label :login, I18n.t('.labels.login'), class:"form-label" %>
+          <%= form.label :login, I18n.t('.sessions.labels.login'), class:"form-label" %>
           <%= form.text_field :login,
             required: true,
             autofocus: true,
             autocomplete: "username",
-            placeholder: I18n.t('placeholders.login'),
+            placeholder: I18n.t('.sessions.placeholders.login'),
             value: params[:login],
             class: "flex-fill rounded-3 form-input border border-black"
           %>
         </div>
 
         <div class="d-flex flex-column">
-          <%= form.label :password, I18n.t('.labels.password'), class:"form-label" %>
+          <%= form.label :password, I18n.t('.sessions.labels.password'), class:"form-label" %>
           <%= form.password_field :password,
             required: true,
             autocomplete: "current-password",
-            placeholder: I18n.t('placeholders.password'),
+            placeholder: I18n.t('.sessions.placeholders.password'),
             maxlength: 72,
             class: "flex-fill rounded-3 form-input border border-black"
           %>
         </div>
 
         <div class="d-flex justify-content-end mt-3">
-          <%= link_to I18n.t('.buttons.forgot_password'),
+          <%= link_to I18n.t('.sessions.buttons.forgot_password'),
             new_password_path,
             class: "link-dark link-underline-opacity-0",
             style:"font-size:14px;"
@@ -47,16 +41,23 @@
         </div>
 
         <div class="d-flex flex-column mt-4">
-          <%= form.submit I18n.t('.buttons.sign_in'),
-            class: "btn btn-dark"
+          <%= form.submit I18n.t('.sessions.buttons.sign_in'),
+            class: "btn btn-dark", style:"height:56px;"
           %>
         </div>
       <% end %>
 
       <div class="d-flex flex-column">
-        <%= button_to I18n.t('.buttons.sign_in_google'), auth_google_path, class: "btn btn-danger w-100 mt-1" %>
-        <%= button_to I18n.t('.buttons.create_account'), new_registration_path, class: "btn btn-secondary w-100 mt-1" %>
+        <%= button_to I18n.t('.sessions.buttons.sign_in_google'), auth_google_path,
+          class: "btn btn-danger w-100 mt-1",
+          style:"height:56px;"
+        %>
+        <%= button_to I18n.t('.sessions.buttons.create_account'),
+          new_registration_path,
+          method: :get,
+          class: "btn btn-secondary w-100 mt-1",
+          style:"height:56px;"
+        %>
       </div>
     </div>
-  </main>
-</div>
+
