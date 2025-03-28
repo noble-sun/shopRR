@@ -54,6 +54,11 @@ pt-BR:
       enable:
         success: Parabéns! Agora você pode cadastrar seus produtos!
         failure: Não foi possível habilitar a venda de produtos
+    password:
+      create: Instruções para recuperação de senha foi enviada (se um usuário com o endereço de email existe).
+      successfully_reset: Sua senha foi atualizada.
+      mismatched_password_confirmation: Senha e confirmação de senha não são iguais.
+      invalid_reset_link: Link de recuperação de senha é invalida ou está expirada.
     product:
       not_found: Desculpe, não achamos o produto
     product_review:
