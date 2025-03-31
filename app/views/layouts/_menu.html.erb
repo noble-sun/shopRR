@@ -1,40 +1,73 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg nav-bar d-flex flex-row justify-content-between">
   <div class="container-fluid">
-    <a class="navbar-brand" href="<%= root_path %>">e-Shop</a>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+    <div>
+      <a class="navbar-brand fs-4" href="<%= root_path %>">
+        <i class="bi bi-gem"></i>
+        ShopRR
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
       <ul class="navbar-nav">
-        <% if authenticated? %>
-          <% if Current.user.seller? %>
-            <li class="nav-item">
-              <%= button_to "My products", seller_products_path, class: "nav-link" %>
-            </li>
-          <% else %>
-            <li class="nav-item">
-              <%= button_to "Become a seller", seller_enable_path, method: :post, class: "nav-link" %>
-            </li>
-          <% end %>
-          <li class="nav-item">
-            <%= button_to "Logout", session_path, method: :delete, class: "nav-link active" %>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<%= url_for(locale: :en) %>">English</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<%= url_for(locale: 'pt-BR') %>">Portuguese</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<%= reviews_path %>">Your Reviews</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<%= orders_path %>">Orders</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<%= cart_path(Current.user.active_cart) %>">Cart</a>
-          </li>
-        <% else %>
-          <a class="nav-link active" aria-current="page" href="<%= new_session_path %>">Login</a>
-        <% end %>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="<%= root_path %>"><%= I18n.t('.layouts.home') %></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#"><%= I18n.t('.layouts.contact') %></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#"><%= I18n.t('.layouts.blog') %></a>
+        </li>
       </ul>
     </div>
+
+    <div class="d-flex align-items-center">
+      <div class="me-2">
+        <a href="<%= url_for(locale: 'pt-BR') %>">
+          <%= image_tag 'brazil-flag.svg', class:"language-icon object-fit-contain" %></a>
+
+        <a href="<%= url_for(locale: :en) %>">
+          <%= image_tag 'usa-flag.svg', class:"language-icon object-fit-contain" %>
+        </a>
+      </div>
+
+      <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <div class="d-flex justify-content-center align-items-center">
+            <i class="bi bi-person-fill fs-4 me-1"></i>
+            <i class="bi bi-chevron-down" style="font-size:12px;"></i>
+          </div>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" href="<%= orders_path %>"><%= I18n.t('.layouts.orders') %></a></li>
+          <li><a class="dropdown-item" href="<%= reviews_path %>"><%= I18n.t('.layouts.reviews') %></a></li>
+          <li>
+            <% if Current.user.seller? %>
+              <%= button_to I18n.t('.layouts.your_products'), seller_products_path, class: "nav-link" %>
+            <% else %>
+              <%= button_to I18n.t('.layouts.become_seller'),
+                seller_enable_path,
+                method: :post,
+                class: "dropdown-item"
+              %>
+            <% end %>
+          </li>
+          <li>
+            <%= button_to I18n.t('.layouts.logout'),
+              session_path,
+              method: :delete,
+              class: "dropdown-item fs-6"
+            %>
+          </li>
+        </ul>
+      </div>
+
+      <div class="ms-4">
+        <a class="nav-link" href="<%= cart_path(Current.user.active_cart) %>">
+          <i class="bi bi-handbag-fill fs-5"></i>
+        </a>
+      </div>
+    </div>
+
   </div>
 </nav>

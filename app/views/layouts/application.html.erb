@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "App" %></title>
+    <title><%= content_for(:title) || "ShopRR" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -24,8 +24,8 @@
   </head>
 
   <body class="bg-secondary min-vh-100">
-    <div class="container app-body p-0 bg-light">
-      <%= render 'layouts/menu' unless controller_name == 'sessions' && action_name == 'new' %>
+    <div class="container app-body bg-light">
+      <%= render 'layouts/menu' %>
       <%= yield %>
     </div>
   </body>

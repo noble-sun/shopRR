@@ -4,6 +4,7 @@
 .app-body {
   min-height: calc(100vh - 56px);
   max-width: 1440px;
+  padding: 0 107px;
 }
 
 .side-banner {
@@ -45,4 +46,20 @@
   font-size: 40px;
   z-index: 2;
   display: flex;
+}
+
+.nav-bar {
+  height: 100px;
+}
+
+.language-icon {
+  width: 20px;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.navbar-nav li {
+  margin: 0 20px;
 }
