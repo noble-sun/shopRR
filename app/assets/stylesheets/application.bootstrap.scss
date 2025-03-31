@@ -2,9 +2,14 @@
 @import 'bootstrap-icons/font/bootstrap-icons';
 
 .app-body {
-  min-height: calc(100vh - 56px);
+  min-height: 100vh;
   max-width: 1440px;
-  padding: 0 107px;
+  padding: 0;
+}
+
+.main-content {
+  padding: 0 107px 170px 107px;
+  max-width: 1440px;
 }
 
 .side-banner {
@@ -62,4 +67,8 @@
 
 .navbar-nav li {
   margin: 0 20px;
+}
+
+.footer {
+  padding: 80px 107px;
 }

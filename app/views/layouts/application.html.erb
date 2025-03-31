@@ -24,9 +24,12 @@
   </head>
 
   <body class="bg-secondary min-vh-100">
-    <div class="container app-body bg-light">
-      <%= render 'layouts/navbar' %>
-      <%= yield %>
+    <div class="container app-body bg-light d-flex flex-column">
+      <div class="container main-content flex-grow-1">
+        <%= render 'layouts/navbar' %>
+        <%= yield %>
+      </div>
+      <%= render 'layouts/footer' %>
     </div>
   </body>
 </html>
