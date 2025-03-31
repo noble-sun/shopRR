@@ -1,36 +1,36 @@
 Rails.application.routes.draw do
   scope "(:locale)", locale: /pt-BR|en/ do
-  resources :orders, only: [ :new, :create, :index ]
-  resources :addresses
-  resource :session, only: [ :new, :create, :destroy ]
-  resources :passwords, param: :token
+    resources :orders, only: [ :new, :create, :index ]
+    resources :addresses
+    resource :session, only: [ :new, :create, :destroy ]
+    resources :passwords, param: :token
 
-  resources :products, only: [ :index ] do
-    resources :product_reviews, only: [ :new, :create, :show, :edit, :update ]
-  end
-  get "reviews", to: "product_reviews#reviews"
-  get "products/:id", to: "products#show", as: "product", constraints: { id: /\d+/ }
-
-  namespace :seller do
-    post "enable", to: "sellers#enable", as: "enable"
-    resources :products
-  end
-
-  resources :registrations, only: [ :new, :create ]
-  resources :carts, only: [ :show ] do
-    post "remove"
-  end
-  post "carts/add", to: "carts#add", as: "cart_add"
-
-  namespace :auth do
-    scope "/google" do
-      get "authenticate", to: "google#authenticate", as: "google"
-      get "callback", to: "google#callback", as: "google_callback"
+    resources :products, only: [ :index ] do
+      resources :product_reviews, only: [ :new, :create, :show, :edit, :update ]
     end
-  end
+    get "reviews", to: "product_reviews#reviews"
+    get "products/:id", to: "products#show", as: "product", constraints: { id: /\d+/ }
 
-  # Defines the root path route ("/")
-  root "products#index"
+    namespace :seller do
+      post "enable", to: "sellers#enable", as: "enable"
+      resources :products
+    end
+
+    resources :registrations, only: [ :new, :create ]
+    resources :carts, only: [ :show ] do
+      post "remove"
+    end
+    post "carts/add", to: "carts#add", as: "cart_add"
+
+    namespace :auth do
+      scope "/google" do
+        get "authenticate", to: "google#authenticate", as: "google"
+        get "callback", to: "google#callback", as: "google_callback"
+      end
+    end
+
+    # Defines the root path route ("/")
+    root "products#index"
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
