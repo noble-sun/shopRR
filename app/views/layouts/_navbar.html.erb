@@ -10,13 +10,13 @@
     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="<%= root_path %>"><%= I18n.t('.layouts.home') %></a>
+          <a class="nav-link active" aria-current="page" href="<%= root_path %>"><%= I18n.t('.layouts.navbar.home') %></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#"><%= I18n.t('.layouts.contact') %></a>
+          <a class="nav-link active" aria-current="page" href="#"><%= I18n.t('.layouts.navbar.contact') %></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#"><%= I18n.t('.layouts.blog') %></a>
+          <a class="nav-link active" aria-current="page" href="#"><%= I18n.t('.layouts.navbar.blog') %></a>
         </li>
       </ul>
     </div>
@@ -39,13 +39,13 @@
           </div>
         </a>
         <ul class="dropdown-menu dropdown-menu-end">
-          <li><a class="dropdown-item" href="<%= orders_path %>"><%= I18n.t('.layouts.orders') %></a></li>
-          <li><a class="dropdown-item" href="<%= reviews_path %>"><%= I18n.t('.layouts.reviews') %></a></li>
+          <li><a class="dropdown-item" href="<%= orders_path %>"><%= I18n.t('.layouts.navbar.orders') %></a></li>
+          <li><a class="dropdown-item" href="<%= reviews_path %>"><%= I18n.t('.layouts.navbar.reviews') %></a></li>
           <li>
             <% if Current.user.seller? %>
-              <%= button_to I18n.t('.layouts.your_products'), seller_products_path, class: "nav-link" %>
+              <%= button_to I18n.t('.layouts.navbar.your_products'), seller_products_path, class: "nav-link" %>
             <% else %>
-              <%= button_to I18n.t('.layouts.become_seller'),
+              <%= button_to I18n.t('.layouts.navbar.become_seller'),
                 seller_enable_path,
                 method: :post,
                 class: "dropdown-item"
@@ -53,7 +53,7 @@
             <% end %>
           </li>
           <li>
-            <%= button_to I18n.t('.layouts.logout'),
+            <%= button_to I18n.t('.layouts.navbar.logout'),
               session_path,
               method: :delete,
               class: "dropdown-item fs-6"

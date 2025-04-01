@@ -1,13 +1,14 @@
 pt-BR:
   layouts:
-    contact: Contate-nos
-    blog: Blog
-    home: Início
-    orders: Meus Pedidos
-    reviews: Minhas Avaliações
-    logout: Sair
-    your_products: Meus Produtos
-    become_seller: Virar Vendedor
+    navbar:
+      contact: Contate-nos
+      blog: Blog
+      home: Início
+      orders: Meus Pedidos
+      reviews: Minhas Avaliações
+      logout: Sair
+      your_products: Meus Produtos
+      become_seller: Virar Vendedor
     footer:
       find_out_more: Quer ficar sabendo o que está por vir?
       github: Acesse o repositório no github

@@ -1,13 +1,14 @@
 en:
   layouts:
-    contact: Contact Us
-    blog: Blog
-    home: Home
-    orders: My Orders
-    reviews: My Reviews
-    logout: Logout
-    your_products: My Products
-    become_seller: Become a Vendor
+    navbar:
+      contact: Contact Us
+      blog: Blog
+      home: Home
+      orders: My Orders
+      reviews: My Reviews
+      logout: Logout
+      your_products: My Products
+      become_seller: Become a Vendor
     footer:
       find_out_more: Want to find out more about what's to come?
       github: Access the github repository
