@@ -21,12 +21,28 @@ user = User.create!(
   role: 'seller'
 )
 
-Product.create!(user:, name: "Cat", description: "A baby cat", quantity: 10, price: 0.1).tap do |product|
+Product.create!(user:, name: "Picture of Tiny cat", description: "A baby cat", quantity: 10, price: 1.5).tap do |product|
   product.images.attach(io: File.open("#{Rails.root}/spec/support/images/cat.jpg"), filename: 'a cat')
 end
 
-Product.create!(user:, name: "Dog", description: "A baby dog", quantity: 10, price: 0.1).tap do |product|
+Product.create!(user:, name: "Image of Smol Dog", description: "A baby dog", quantity: 10, price: 2.5).tap do |product|
   product.images.attach(io: File.open("#{Rails.root}/spec/support/images/dog.jpg"), filename: 'a cat')
+end
+
+Product.create!(user:, name: "Photo of mini Duck", description: "A baby duck", quantity: 10, price: 10.1).tap do |product|
+  product.images.attach(io: File.open("#{Rails.root}/public/duck.jpg"), filename: 'a duck')
+end
+
+Product.create!(user:, name: "Still of an Otter", description: "A baby otter", quantity: 10, price: 12).tap do |product|
+  product.images.attach(io: File.open("#{Rails.root}/public/otter.jpg"), filename: 'a otter')
+end
+
+Product.create!(user:, name: "Image of a Tiger", description: "A baby tiger", quantity: 10, price: 50).tap do |product|
+  product.images.attach(io: File.open("#{Rails.root}/public/tiger.jpg"), filename: 'a tiger')
+end
+
+Product.create!(user:, name: "Picture of a Polar Bear", description: "A baby polar bear", quantity: 10, price: 250).tap do |product|
+  product.images.attach(io: File.open("#{Rails.root}/public/polar-bear.jpg"), filename: 'a polar bear')
 end
 
 require "#{Rails.root.join("spec/support/factory_helpers")}"

@@ -15,7 +15,7 @@ RSpec.describe 'Seller Products', type: :request do
         expect(response).to have_http_status(:success)
         expect(response.body).to include(products.first.name)
         expect(response.body).to include(products.second.name)
-        expect(response.body).to include("#{seller.name} Products")
+        expect(response.body).to include("Produtos de #{seller.name}")
         expect(response.body).to_not include('Different Product')
       end
     end

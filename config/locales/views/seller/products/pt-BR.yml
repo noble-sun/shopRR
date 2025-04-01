@@ -1,0 +1,7 @@
+pt-BR:
+  sellers:
+    index:
+      seller_products: Produtos do Vendedor
+      title: "Produtos de %{seller}"
+      quantity: "qtde: %{quantity}"
+      new_product: Novo Produto
