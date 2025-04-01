@@ -1,0 +1,7 @@
+en:
+  sellers:
+    index:
+      seller_products: Seller Products
+      title: "%{seller} Products"
+      quantity: "qtt: %{quantity}"
+      new_product: New Product
