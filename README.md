@@ -1,5 +1,8 @@
 # ShopRR
 
+[![en](https://img.shields.io/badge/lang-en-red)](https://github.com/noble-sun/shopRR/blob/main/README.md)
+[![pt-br](https://img.shields.io/badge/lang-pt--br-green)](https://github.com/noble-sun/shopRR/blob/main/README.pt-br.md)
+
 A online ***Shop*** made with ***R***uby on ***R***ails.
 
 # Tech Stack
@@ -83,5 +86,5 @@ rspec
 - [ ] Product sizes
 - [ ] Product variations
 - [x] Product review and comments
-- [ ] Language selection
+- [x] Language selection
 ---
