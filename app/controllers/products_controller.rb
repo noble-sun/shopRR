@@ -7,6 +7,10 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params.expect(:id))
+    @rating =
+      if @product.product_reviews.present?
+        @product.product_reviews.pluck(:score).sum / @product.product_reviews.count
+      end
   end
 
   private

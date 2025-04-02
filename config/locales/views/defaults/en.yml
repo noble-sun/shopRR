@@ -1,4 +1,5 @@
 en:
+  currency: "$%{price}"
   layouts:
     navbar:
       contact: Contact Us

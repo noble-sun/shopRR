@@ -1,4 +1,5 @@
 pt-BR:
+  currency: "R$%{price}"
   layouts:
     navbar:
       contact: Contate-nos

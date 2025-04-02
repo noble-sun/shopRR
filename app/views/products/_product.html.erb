@@ -1,33 +1,62 @@
-<div id="<%= dom_id product %>">
-  <p>
-    <strong>Name:</strong>
-    <%= product.name %>
-  </p>
+<div id="<%= dom_id product %>" class="d-flex justify-content-between">
+  <div class="d-flex" data-controller="product">
+    <div class="thumbnails-container">
+      <% (0..2).each do |index| %>
+        <div class="thumbnail">
+          <%= image_tag product.images[index],
+            data: { action: "click->product#changeImage", product_image_url: url_for(product.images[index]) },
+            class: "thumbnail-image" if product.images[index]
+          %>
+        </div>
+      <% end %>
+    </div>
+    <div class="focus-image-container bg-secondary">
+      <%= image_tag product.images.first, class: "main-image", data: { product_target: "mainImage"} %>
+    </div>
+  </div>
+  <div class="product-details d-flex flex-column">
+    <h2 class="fw-semibold fs-2">
+      <%= product.name %>
+    </h2>
+    <div class="d-flex price-and-rating-container">
+      <span class="fs-3">
+        <%= I18n.t('currency', price: sprintf('%.2f', product.price.to_s)) %>
+      </span>
+      <span class="vertical-divider"></span>
+      <span>
+        <%= rating %> (<%= product.product_reviews.count %> reviews)
+      </span>
+    </div>
+    <hr>
 
-  <p>
-    <strong>Description:</strong>
+  <p class="flex-grow-1">
     <%= product.description %>
   </p>
 
-  <p>
-    <strong>Quantity:</strong>
-    <%= product.quantity %>
-  </p>
-
-  <p>
-    <strong>Price:</strong>
-    <%= product.price.to_s %>
-  </p>
-
-  <p>
-    <% product.images.each do |image| %>
-      <%= image_tag image, class: "h-25 w-25" %>
-    <% end %>
-  </p>
-
-  <%= form_with(url: cart_add_path) do |form| %>
+  <%= form_with url: cart_add_path, class:"d-flex flex-column" do |form| %>
     <%= form.hidden_field :id, value: product.id %>
-    <%= form.number_field :quantity, value: 0, min: 1, max: product.quantity %>
-    <%= form.submit "Add to cart"%>
+    <div class="d-flex flex-row">
+      <div
+        data-controller="product"
+        class="border rounded-pill bg-light d-flex align-items-center px-3 me-3"
+        style="height:49px;"
+      >
+        <i id="minus" data-action="click->product#decrement" class="bi bi-dash fs-3" style="cursor:pointer;"></i>
+        <%= form.text_field :quantity,
+          id:"product-quantity",
+          value: 0,
+          size: 3,
+          class:"border-0 bg-light text-center",
+          data: { product_target: "quantity"}
+        %>
+        <i id="plus" data-action="click->product#increment" class="bi bi-plus fs-3" style="cursor:pointer;"></i>
+      </div>
+      <%= form.submit I18n.t('.show.add_cart') , class:"btn btn-dark rounded-pill w-100"%>
+    </div>
+    <%= form.submit I18n.t('.show.buy_now'),
+      class:"btn btn-light btn-outline-secondary btn-buy-now",
+      style:"height:49px;", name:"buy_now"
+    %>
   <% end %>
+  </div>
 </div>

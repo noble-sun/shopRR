@@ -91,3 +91,64 @@
 .card p {
   font-size: 14px;
 }
+
+.focus-image-container {
+  width: 500px;
+  height: 627px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+}
+
+.thumbnails-container {
+  display: flex;
+  flex-direction: column;
+  margin-right: 32px; 
+  justify-content: space-between;
+}
+
+.thumbnail {
+  width: 141px;
+  height: 194px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.thumbnail-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-details {
+  width: 500px;
+  height: 627px;
+}
+
+.price-and-rating-container {
+  height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.vertical-divider {
+  border: 1px solid black;
+  margin: 10px 10px;
+  align-self: stretch;
+}
+
+.btn-buy-now {
+  border: 2px solid gray;
+  border-radius: 50rem;
+  width: 100%;
+  margin-top: 1rem;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,6 +1,17 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @product %>
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="<%= products_path %>" class="link-secondary link-underline-opacity-0">
+        <%= I18n.t('.breadcrumbs.show.products') %>
+      </a>
+    </li>
+    <li class="breadcrumb-item active text-black" aria-current="page"> <%= @product.name %></li>
+  </ol>
+</nav>
+
+<%= render @product, rating: @rating %>
 
 
 <div>
