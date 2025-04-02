@@ -1,37 +1,40 @@
-<p style="color: green"><%= notice %></p>
-
-<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-      <a href="<%= products_path %>" class="link-secondary link-underline-opacity-0">
-        <%= I18n.t('.breadcrumbs.show.products') %>
-      </a>
-    </li>
-    <li class="breadcrumb-item active text-black" aria-current="page"> <%= @product.name %></li>
-  </ol>
-</nav>
-
-<%= render @product, rating: @rating %>
-
-
 <div>
-  <%= link_to "Review product", new_product_product_review_path(@product) %>
-</div>
+  <p style="color: green"><%= notice %></p>
 
-<% if @product.product_reviews.exists? %>
-<div>
-  <% @product.product_reviews.each do |review| %>
-    <div>
-      <label> Score: <span> <%= review.score %> </span></label>
-      <p> <%= review.comment %> </p>
+  <div class="content-padding">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="<%= products_path %>" class="link-secondary link-underline-opacity-0">
+            <%= I18n.t('.breadcrumbs.show.products') %>
+          </a>
+        </li>
+        <li class="breadcrumb-item active text-black" aria-current="page"> <%= @product.name %></li>
+      </ol>
+    </nav>
 
-      <% if Current.user == review.user %>
-        <%= link_to "edit comment", edit_product_product_review_path(@product, review), method: :patch %>
-      <% end %>
-    </div>
+    <%= render @product, rating: @rating %>
+  </div>
+
+  <div>
+    <%= link_to "Review product", new_product_product_review_path(@product) %>
+  </div>
+
+  <% if @product.product_reviews.exists? %>
+  <div>
+    <% @product.product_reviews.each do |review| %>
+      <div>
+        <label> Score: <span> <%= review.score %> </span></label>
+        <p> <%= review.comment %> </p>
+
+        <% if Current.user == review.user %>
+          <%= link_to "edit comment", edit_product_product_review_path(@product, review), method: :patch %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
   <% end %>
-</div>
-<% end %>
-<div>
-  <%= link_to "Back to products", products_path %>
+  <div>
+    <%= link_to "Back to products", products_path %>
+  </div>
 </div>

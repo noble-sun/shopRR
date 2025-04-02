@@ -8,8 +8,12 @@
 }
 
 .main-content {
-  padding: 0 107px 170px 107px;
+  padding: 0 0 170px 0;
   max-width: 1440px;
+}
+
+.content-padding {
+  padding: 0 107px;
 }
 
 .side-banner {

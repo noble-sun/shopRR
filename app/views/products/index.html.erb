@@ -1,27 +1,29 @@
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+<div class="content-padding">
+  <%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
+  <%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
 
-<% content_for :title, I18n.t('.index.products') %>
+  <% content_for :title, I18n.t('.index.products') %>
 
-<h1 class="mb-5"><%= I18n.t('.index.title') %></h1>
+  <h1 class="mb-5"><%= I18n.t('.index.title') %></h1>
 
-<div class="container" id="products">
-  <div class="row row-cols-4 gap-4 row-gap-4 justify-content-start">
-  <% @products.each do |product| %>
-    <div class="card col">
-      <%= image_tag product.images.first, class: "rounded object-fit-cover"%>
-      <div class="mx-3 my-2 p-0 h-100">
-        <h5 class="">
-          <a href="<%= product_path(product) %>" class="link-dark link-underline-opacity-0"><%= product.name %></a>
-        </h5>
-        <div class="d-flex justify-content-between align-items-center">
-          <p class="h-100 m-0">R$ <%= product.price%></p>
-          <a href="#">
-            <i class="bi bi-plus-circle fs-4"></i>
-          </a>
+  <div class="container" id="products">
+    <div class="row row-cols-4 gap-4 row-gap-4 justify-content-start">
+    <% @products.each do |product| %>
+      <div class="card col">
+        <%= image_tag product.images.first, class: "rounded object-fit-cover"%>
+        <div class="mx-3 my-2 p-0 h-100">
+          <h5 class="">
+            <a href="<%= product_path(product) %>" class="link-dark link-underline-opacity-0"><%= product.name %></a>
+          </h5>
+          <div class="d-flex justify-content-between align-items-center">
+            <p class="h-100 m-0">R$ <%= product.price%></p>
+            <a href="#">
+              <i class="bi bi-plus-circle fs-4"></i>
+            </a>
+          </div>
         </div>
       </div>
+    <% end %>
     </div>
-  <% end %>
   </div>
 </div>
