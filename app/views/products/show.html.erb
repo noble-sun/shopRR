@@ -1,7 +1,7 @@
 <div>
   <p style="color: green"><%= notice %></p>
 
-  <div class="content-padding">
+  <div class="content-padding" style="padding-bottom:80px">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
@@ -13,28 +13,28 @@
       </ol>
     </nav>
 
-    <%= render @product, rating: @rating %>
+    <%= render @product, rating: @rating, reviews_count: @reviews.count %>
   </div>
 
-  <div>
-    <%= link_to "Review product", new_product_product_review_path(@product) %>
-  </div>
+  <div class="w-100" style="background-color: #f8f8f8; padding: 80px 100px;">
+    <h2 class="text-secondary fs-3 mb-4"> Reviews </h2>
 
-  <% if @product.product_reviews.exists? %>
-  <div>
-    <% @product.product_reviews.each do |review| %>
-      <div>
-        <label> Score: <span> <%= review.score %> </span></label>
-        <p> <%= review.comment %> </p>
-
-        <% if Current.user == review.user %>
-          <%= link_to "edit comment", edit_product_product_review_path(@product, review), method: :patch %>
-        <% end %>
-      </div>
+    <% if @reviews.exists? %>
+    <div>
+      <% @reviews.each do |review| %>
+        <div class="border border-secondary-subtle rounded-4 w-100 p-3 mb-4">
+          <div class="d-flex justify-content-between">
+            <h3 class="fs-6 text-dark"> <%= review.user.fullname %> </h3>
+            <label> rating: <span> <%= review.score %> </span></label>
+          </div>
+          <p class="fs-6 text-secondary"> <%= review.comment %> </p>
+          <span> </span>
+          <% if Current.user == review.user %>
+            <%= link_to "edit comment", edit_product_product_review_path(@product, review), method: :patch %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
     <% end %>
-  </div>
-  <% end %>
-  <div>
-    <%= link_to "Back to products", products_path %>
   </div>
 </div>
