@@ -28,7 +28,7 @@
             <label> rating: <span> <%= review.score %> </span></label>
           </div>
           <p class="fs-6 text-secondary"> <%= review.comment %> </p>
-          <span> </span>
+          <span><%= I18n.l(review.created_at.to_date, format: :default) %></span>
           <% if Current.user == review.user %>
             <%= link_to "edit comment", edit_product_product_review_path(@product, review), method: :patch %>
           <% end %>
