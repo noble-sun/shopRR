@@ -1,0 +1,13 @@
+en:
+  product_reviews:
+    title: Reviews
+    labels:
+      your_rating: "Your review:"
+      hide_name: Hide your name on review?
+      score: "Rating:"
+      anonymous: Anonymous
+    placeholders:
+      comment: Write your review...
+    buttons:
+      review: Post Review
+      edit: Edit review
