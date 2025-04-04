@@ -1,4 +1,10 @@
 en:
+  breadcrumbs:
+    show:
+      products: Products
   index:
     products: Products
     title: Product Catalog
+  show:
+    add_cart: Add to Cart
+    buy_now: Buy Now

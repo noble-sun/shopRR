@@ -5,3 +5,11 @@ en:
       title: "%{seller} Products"
       quantity: "qtt: %{quantity}"
       new_product: New Product
+    show:
+      no_reviews: This product doesn't have any reviews yet
+      quantity: "Quantity: %{quantity}"
+      buttons:
+        edit: Edit Product
+        destroy: Delete Product
+        confirmation:
+          destroy: "Are you sure you want to delete the product \"%{name}\"?"

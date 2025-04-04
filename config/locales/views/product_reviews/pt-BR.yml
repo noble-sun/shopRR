@@ -1,0 +1,13 @@
+pt-BR:
+  product_reviews:
+    title: Avaliações
+    labels:
+      your_rating: "Sua Avaliação:"
+      hide_name: Esconder seu nome na avaliação?
+      score: "Avaliação:"
+      anonymous: Anônimo
+    placeholders:
+      comment: Escreva sua avaliação...
+    buttons:
+      review: Avaliar
+      edit: Editar avaliação

@@ -23,10 +23,13 @@ user = User.create!(
 
 Product.create!(user:, name: "Picture of Tiny cat", description: "A baby cat", quantity: 10, price: 1.5).tap do |product|
   product.images.attach(io: File.open("#{Rails.root}/spec/support/images/cat.jpg"), filename: 'a cat')
+  product.images.attach(io: File.open("#{Rails.root}/public/cat-2.jpg"), filename: 'another cat')
 end
 
 Product.create!(user:, name: "Image of Smol Dog", description: "A baby dog", quantity: 10, price: 2.5).tap do |product|
-  product.images.attach(io: File.open("#{Rails.root}/spec/support/images/dog.jpg"), filename: 'a cat')
+  product.images.attach(io: File.open("#{Rails.root}/spec/support/images/dog.jpg"), filename: 'a dog')
+  product.images.attach(io: File.open("#{Rails.root}/public/dog-2.jpg"), filename: 'another dog')
+  product.images.attach(io: File.open("#{Rails.root}/public/dog-3.jpg"), filename: 'yet another dog')
 end
 
 Product.create!(user:, name: "Photo of mini Duck", description: "A baby duck", quantity: 10, price: 10.1).tap do |product|

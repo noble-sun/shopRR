@@ -1,26 +1,48 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @product %>
-
-
 <div>
-  <%= link_to "Review product", new_product_product_review_path(@product) %>
-</div>
+  <p style="color: green"><%= notice %></p>
 
-<% if @product.product_reviews.exists? %>
-<div>
-  <% @product.product_reviews.each do |review| %>
+  <div class="content-padding" style="padding-bottom:80px">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="<%= products_path %>" class="link-secondary link-underline-opacity-0">
+            <%= I18n.t('.breadcrumbs.show.products') %>
+          </a>
+        </li>
+        <li class="breadcrumb-item active text-black" aria-current="page"> <%= @product.name %></li>
+      </ol>
+    </nav>
+
+    <%= render @product, rating: @rating, reviews_count: @reviews.count %>
+  </div>
+
+  <div class="w-100" style="background-color: #f8f8f8; padding: 80px 100px;" data-controller="review">
+    <h2 class="text-secondary fs-3 mb-4"><%= I18n.t('product_reviews.title') %></h2>
+
+    <% if @reviews.exists? %>
     <div>
-      <label> Score: <span> <%= review.score %> </span></label>
-      <p> <%= review.comment %> </p>
-
-      <% if Current.user == review.user %>
-        <%= link_to "edit comment", edit_product_product_review_path(@product, review), method: :patch %>
+      <% @reviews.each do |review| %>
+        <div class="border border-secondary-subtle rounded-4 w-100 p-3 mb-4">
+          <div class="d-flex justify-content-between">
+            <h3 class="fs-6 text-dark">
+              <%= review.anonymous ? I18n.t('product_reviews.labels.anonymous') : review.user.fullname %>
+            </h3>
+            <label><%= I18n.t('product_reviews.labels.score') %><span> <%= review.score %> </span></label>
+          </div>
+          <p class="fs-6 text-secondary"> <%= review.comment %> </p>
+          <div class="d-flex justify-content-between">
+            <span><%= I18n.l(review.updated_at.to_date, format: :default) %></span>
+            <% if Current.user == review.user %>
+              <%= link_to I18n.t('product_reviews.buttons.edit'), "#",
+                class:"link-dark link-underline-opacity-0",
+                data: { action: "click->review#edit", comment: review.comment, score: review.score, anonymous: review.anonymous }
+              %>
+            <% end %>
+          </div>
+        </div>
       <% end %>
     </div>
-  <% end %>
-</div>
-<% end %>
-<div>
-  <%= link_to "Back to products", products_path %>
+    <% end %>
+    <%= render 'product_reviews/form', product_review: @user_review, product: @product %>
+  </div>
 </div>

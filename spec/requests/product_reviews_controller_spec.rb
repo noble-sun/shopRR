@@ -227,7 +227,7 @@ RSpec.describe 'ProductReviews', type: :request do
           }.to_not change(ProductReview, :count)
 
           expect(response).to have_http_status(:redirect)
-          expect(response).to redirect_to(product_product_review_path(product, product_review))
+          expect(response).to redirect_to(product_path(product))
           expect(product_review.reload.score).to eq(8)
           expect(product_review.reload.comment).to eq('updated comment review')
         end

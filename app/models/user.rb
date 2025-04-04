@@ -40,6 +40,10 @@ class User < ApplicationRecord
     user&.authenticate(auth[:password])
   end
 
+  def fullname
+    "#{name} #{surname}"
+  end
+
   def active_cart
     carts.active.last || carts.create!
   end

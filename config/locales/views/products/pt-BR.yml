@@ -1,4 +1,10 @@
 pt-BR:
+  breadcrumbs:
+    show:
+      products: Produtos
   index:
     products: Produtos
     title: Calálogo de Produtos
+  show:
+    add_cart: Adicionar ao Carrinho
+    buy_now: Comprar

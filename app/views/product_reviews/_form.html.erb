@@ -1,9 +1,11 @@
-<h2> FORM PRODUCT REVIEW </h2>
+<div class="border border-secondary-subtle rounded-4 w-100 p-3 mb-4" style="background-color:#f2f2f2;">
 <%= form_with(
   model: product_review,
-  url: product_review.new_record? ?
-  product_product_reviews_path(product) :
-  product_product_review_path(product, product_review)
+  url: product_review.persisted? ?
+  product_product_review_path(product, product_review) :
+  product_product_reviews_path(product),
+  method: product_review.persisted? ? :patch : :post,
+  data: { review_target: 'form'}
 ) do |form| %>
   <% if product_review.errors.any? %>
     <div style="color: red">
@@ -15,19 +17,40 @@
       </ul>
     </div>
   <% end %>
+  <%= form.label :score, I18n.t('.product_reviews.labels.your_rating'), class:"fs-6 mb-2", style: "color:#3d3d3d;" %>
+  <div class="d-flex mb-4">
+    <div class="w-50 pe-5">
+      <%= form.number_field :score,
+        min:1,
+        max:10,
+        required: true,
+        class:"border rounded-pill border-secondary-subtle fs-6 text-secondary p-3 w-100 focus-ring focus-ring-dark",
+        style:"background-color:#f2f2f2; height:56px;--bs-focus-ring-width:1px;",
+        data: { review_target: "score" }
+      %>
+    </div>
 
-  <div>
-    <%= form.label :score, style: "display: block" %>
-    <%= form.number_field :score %>
+    <div class="d-flex align-items-center">
+      <%= form.check_box :anonymous %>
+      <%= form.label :anonymous,
+        I18n.t('.product_reviews.labels.hide_name'),
+        data: { review_target: "anonymous" },
+        class:"ms-3",
+        style: "color:#3d3d3d;"
+      %>
+    </div>
   </div>
- 
   <div>
-    <%= form.label :comment, style: "display: block" %>
-    <%= form.text_area :comment %>
+    <%= form.text_area :comment,
+      placeholder: I18n.t('.product_reviews.placeholders.comment'),
+      class:"border rounded-4 border-secondary-subtle fs-6 text-secondary p-3 w-100 focus-ring focus-ring-dark",
+      style:"background-color:#f2f2f2;min-height:136px;--bs-focus-ring-width:1px;",
+      data: { review_target: 'comment'}
+    %>
   </div>
 
-  <div>
-    <%= form.submit 'review' %>
+  <div class="d-flex justify-content-end mt-3">
+    <%= form.submit I18n.t('.product_reviews.buttons.review'), class:"btn btn-dark rounded-pill fs-6", style:"height:44px;width:172px;" %>
   </div>
 <% end %>
-
+</div>
