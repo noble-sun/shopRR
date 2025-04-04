@@ -1,0 +1,9 @@
+pt-BR:
+  carts:
+    title: Total Carrinho
+    show:
+      subtotal: SUBTOTAL
+      discount: DESCONTO
+      total: TOTAL
+      checkout: Prosseguir com Check-out
+      

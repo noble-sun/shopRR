@@ -1,0 +1,8 @@
+en:
+  carts:
+    title: Cart Total
+    show:
+      subtotal: SUBTOTAL
+      discount: DISCOUNT
+      total: TOTAL
+      checkout: Proceed to Checkout
