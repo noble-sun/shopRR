@@ -7,7 +7,10 @@ module Seller
       @products = Product.with_attached_images.seller_products(Current.user)
     end
 
-    def show; end
+    def show
+      @reviews = @product.product_reviews
+      @rating = @reviews.average(:score).to_f
+    end
 
     def new
       @product = Product.new

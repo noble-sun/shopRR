@@ -5,3 +5,11 @@ pt-BR:
       title: "Produtos de %{seller}"
       quantity: "qtde: %{quantity}"
       new_product: Novo Produto
+    show:
+      no_reviews: Este produto ainda não possui avaliações
+      quantity: "Quantidade: %{quantity}"
+      buttons:
+        edit: Editar Produto
+        destroy: Deletar Produto
+        confirmation:
+          destroy: "Tem certeza que deseja deletar o produto \"%{name}\"?"

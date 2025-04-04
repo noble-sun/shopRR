@@ -33,7 +33,7 @@ RSpec.describe 'Seller Products', type: :request do
         expect(response).to have_http_status(:success)
         expect(response.body).to include(product.name)
         expect(response.body).to include(product.description)
-        expect(response.body).to include("Edit this product")
+        expect(response.body).to include("Editar Produto")
       end
     end
 

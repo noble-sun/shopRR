@@ -1,33 +1,61 @@
-<div id="<%= dom_id product %>">
-  <p>
-    <strong>Name:</strong>
-    <%= product.name %>
-  </p>
+<div id="<%= dom_id product %>" class="d-flex justify-content-between">
+  <div class="d-flex" data-controller="product">
+    <div class="thumbnails-container">
+      <% (0..2).each do |index| %>
+        <div class="thumbnail">
+          <%= image_tag product.images[index],
+            data: { action: "click->product#changeImage", product_image_url: url_for(product.images[index]) },
+            class: "thumbnail-image" if product.images[index]
+          %>
+        </div>
+      <% end %>
+    </div>
+    <div class="focus-image-container bg-secondary">
+      <%= image_tag product.images.first, class: "main-image", data: { product_target: "mainImage"} %>
+    </div>
+  </div>
+  <div class="product-details d-flex flex-column">
+    <h2 class="fw-semibold fs-2">
+      <%= product.name %>
+    </h2>
+    <div class="d-flex price-and-rating-container">
+      <span class="fs-3">
+        <%= I18n.t('currency', price: sprintf('%.2f', product.price.to_s)) %>
+      </span>
+      <span class="vertical-divider"></span>
+      <span>
+        <%= rating %> (<%= reviews_count %> reviews)
+      </span>
+    </div>
+    <hr>
 
-  <p>
-    <strong>Description:</strong>
-    <%= product.description %>
-  </p>
+    <p class="flex-grow-1">
+      <%= product.description %>
+    </p>
 
-  <p>
-    <strong>Quantity:</strong>
-    <%= product.quantity %>
-  </p>
-
-  <p>
-    <strong>Price:</strong>
-    <%= product.price.to_s %>
-  </p>
-
-  <p>
-    <% product.images.each do |image| %>
-      <%= image_tag image, class: "h-25 w-25" %>
-    <% end %>
-  </p>
-
-  <%= form_with(url: cart_add_path) do |form| %>
-    <%= form.hidden_field :id, value: product.id %>
-    <%= form.number_field :quantity, value: 0, min: 1, max: product.quantity %>
-    <%= form.submit "Add to cart"%>
-  <% end %>
+    <div class="d-flex flex-column">
+      <div class="d-flex flex-row flex-nowrap">
+        <label
+          class="border rounded-pill bg-light d-flex align-items-center px-3 me-3 flew-shrink-0"
+          style="height:49px;"
+        >
+          <%= I18n.t('.sellers.show.quantity', quantity: product.quantity) %>
+        </label>
+      <%= link_to I18n.t('.sellers.show.buttons.edit'),
+        edit_seller_product_path(product),
+        class:"btn btn-dark rounded-pill flex-grow-1 align-items-center justify-content-center d-flex",
+        style:"height:49px;"
+      %>
+      </div>
+      <%= link_to I18n.t('.sellers.show.buttons.destroy'),
+        seller_product_path(product),
+        data: {
+          turbo_method: :delete,
+          turbo_confirm: I18n.t('.sellers.show.buttons.confirmation.destroy', name: product.name)
+        },
+        class:"btn btn-light btn-outline-secondary btn-buy-now",
+        style:"height:49px;"
+      %>
+    </div>
+  </div>
 </div>
