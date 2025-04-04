@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import ProductController from "./product_controller"
 application.register("product", ProductController)
+
+import ReviewController from "./review_controller"
+application.register("review", ReviewController)

@@ -16,7 +16,7 @@
     <%= render @product, rating: @rating, reviews_count: @reviews.count %>
   </div>
 
-  <div class="w-100" style="background-color: #f8f8f8; padding: 80px 100px;">
+  <div class="w-100" style="background-color: #f8f8f8; padding: 80px 100px;" data-controller="review">
     <h2 class="text-secondary fs-3 mb-4"><%= I18n.t('product_reviews.title') %></h2>
 
     <% if @reviews.exists? %>
@@ -33,10 +33,9 @@
           <div class="d-flex justify-content-between">
             <span><%= I18n.l(review.updated_at.to_date, format: :default) %></span>
             <% if Current.user == review.user %>
-              <%= link_to I18n.t('product_reviews.buttons.edit'),
-                edit_product_product_review_path(@product, review),
-                method: :patch,
-                class:"link-dark link-underline-opacity-0"
+              <%= link_to I18n.t('product_reviews.buttons.edit'), "#",
+                class:"link-dark link-underline-opacity-0",
+                data: { action: "click->review#edit", comment: review.comment, score: review.score, anonymous: review.anonymous }
               %>
             <% end %>
           </div>
@@ -44,6 +43,6 @@
       <% end %>
     </div>
     <% end %>
-    <%= render 'product_reviews/form', product_review: @product.product_reviews.new, product: @product %>
+    <%= render 'product_reviews/form', product_review: @user_review, product: @product %>
   </div>
 </div>

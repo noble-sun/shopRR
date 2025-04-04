@@ -48,7 +48,7 @@ class ProductReviewsController < ApplicationController
 
   def update
     if @product_review.update(product_review_params)
-      redirect_to product_product_review_path(@product, @product_review),
+      redirect_to product_path(@product),
         notice: I18n.t("flash.product_review.updated.successfully")
     else
       render :edit, status: :unprocessable_entity
