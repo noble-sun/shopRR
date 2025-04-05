@@ -9,6 +9,11 @@ export default class extends Controller {
     this.quantityTarget.value = count < 1 ? 0 : count;
   }
 
+  decrementInCart() {
+    let count = parseInt(this.quantityTarget.value) - 1;
+    this.quantityTarget.value = count < 1 ? 1 : count;
+  }
+
   increment() {
     this.quantityTarget.value = parseInt(this.quantityTarget.value) + 1;
   }
@@ -16,5 +21,4 @@ export default class extends Controller {
   changeImage(event) {
     this.mainImageTarget.src = event.currentTarget.dataset.productImageUrl;
   }
-
 }

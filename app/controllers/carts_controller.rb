@@ -11,13 +11,26 @@ class CartsController < ApplicationController
     redirect_to cart_path(@cart) if cart_params[:buy_now].present?
   end
 
+  def update_item_quantity
+    product = Product.find_by(id: params[:product_id])
+    quantity = cart_params[:quantity].to_i
+
+    @cart.update_cart_item(product, quantity)
+    @item = CartItem.find_by(id: params[:id])
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to cart_path(@cart) }
+    end
+  end
+
   def remove
     @item = CartItem.find_by(id: params[:id])
     @item.destroy
 
     respond_to do |format|
       format.turbo_stream
-      format.html { redirect_to cart_path(@cart), notice: "item removed from cart" }
+      format.html { redirect_to cart_path(@cart) }
     end
   end
 
@@ -28,6 +41,6 @@ class CartsController < ApplicationController
   end
 
   def cart_params
-    params.permit(:quantity, :id, :buy_now)
+    params.permit(:quantity, :id, :product_id, :buy_now)
   end
 end

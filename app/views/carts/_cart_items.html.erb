@@ -27,28 +27,7 @@
       </thead>
       <tbody>
         <% @cart.cart_items.each do |item| %>
-          <tr id="<%= dom_id(item) %>">
-            <td class="text-dark align-middle ps-3" style="height:119px;">
-              <div class="d-flex align-items-center">
-                <%= form_with url: cart_remove_path(@cart), data: { turbo_confirm: "Are you sure?" } do |form| %>
-                <%= form.hidden_field :id, value: item.id %>
-                <%= form.button nil, class:"btn-delete" do %>
-                  <i class="bi bi-x fs-5"></i>
-                <% end %>
-              <% end %>
-              <%= item.product.name %>
-              </div>
-            </td>
-            <td class="text-secondary align-middle">
-              <%= I18n.t('currency', price: sprintf('%.2f', item.product.price)) %>
-            </td>
-            <td class="text-secondary align-middle">
-              <%= item.quantity %>
-            </td>
-            <td class="text-secondary align-middle">
-              <%= I18n.t('currency', price: sprintf('%.2f', item.price)) %>
-            </td>
-          </tr>
+          <%= render 'cart_item', cart: @cart, item: item %>
         <% end %>
       </tbody>
     </table>
