@@ -12,7 +12,13 @@ class CartsController < ApplicationController
   end
 
   def remove
-    CartItem.find_by(id: params[:id]).destroy
+    @item = CartItem.find_by(id: params[:id])
+    @item.destroy
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to cart_path(@cart), notice: "item removed from cart" }
+    end
   end
 
   private

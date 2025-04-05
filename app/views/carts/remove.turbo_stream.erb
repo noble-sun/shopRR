@@ -1,0 +1,9 @@
+<%= turbo_stream.remove dom_id(@item) %>
+
+<%= turbo_stream.replace "cart_total_overview" do %>
+    <%= render 'cart_total_overview', local: @cart %>
+<% end %>
+
+<%= turbo_stream.replace "cart_items_overview" do %>
+    <%= render 'cart_items', local: @cart %>
+<% end %>

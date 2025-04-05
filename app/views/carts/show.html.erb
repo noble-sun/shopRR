@@ -3,54 +3,10 @@
     <%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
     <%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
 
-    <%= render 'cart_items', local: @cart %>
-
-    <div class="border rounded-4 overflow-hidden m-0 p-0" style="width:500px;height:434px;">
-      <table class="table m-0 h-100">
-        <thead>
-          <tr>
-            <th scope="col" colspan="2"
-              class="ps-4 align-middle fs-5 text-white fw-light bg-secondary"
-              style="--bs-bg-opacity: .3;"
-              ><%= I18n.t('.carts.title') %></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row" class="ps-4 align-middle text-secondary text-opacity-75 fw-light">
-              <%= I18n.t('.carts.show.subtotal') %>
-            </th>
-            <td class="pe-4 text-end align-middle text-secondary text-opacity-50 fw-light">
-              <%= I18n.t('currency', price: sprintf('%.2f', @cart.total)) %>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row" class="ps-4 align-middle text-secondary text-opacity-75 fw-light">
-              <%= I18n.t('.carts.show.discount') %>
-            </th>
-            <td class="pe-4 text-end align-middle text-secondary text-opacity-50 fw-light"> --- </td>
-          </tr>
-          <tr>
-            <th scope="row" class="ps-4 align-middle text-secondary text-opacity-75 fw-light">
-              <%= I18n.t('.carts.show.total') %>
-            </th>
-            <td class="pe-4 text-end align-middle text-secondary text-opacity-50 fw-light">
-              <%= I18n.t('currency', price: sprintf('%.2f', @cart.total)) %>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row" colspan="2"
-              class="align-middle text-center bg-dark"
-              style="--bs-bg-opacity: .5;"
-            >
-            <%= link_to I18n.t('.carts.show.checkout'), new_order_path,
-              class:"d-block link-underline-opacity-0 link-light fw-light fs-5 w-100 h-100"
-              %>
-            </th>
-          </tr>
-        </tbody>
-      </table>
+    <div id="cart_items_overview">
+      <%= render 'cart_items', local: @cart %>
     </div>
 
+    <%= render 'cart_total_overview', local: @cart %>
   </div>
 </div>
