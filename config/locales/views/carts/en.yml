@@ -6,3 +6,9 @@ en:
       discount: DISCOUNT
       total: TOTAL
       checkout: Proceed to Checkout
+      product: Product
+      price: Price
+      quantity: Quantity
+      total: Total
+      no_products: No products in cart
+

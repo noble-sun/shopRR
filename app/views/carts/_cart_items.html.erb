@@ -1,31 +1,60 @@
-<% @cart.cart_items.each do |item| %>
-  <% product = item.product %>
-  <div id="<%= "cart-#{product.id}" %>">
-  <div class="d-inline-flex justify-contentt-around">
-  <p>
-    <strong>Name:</strong>
-    <%= product.name %>
-  </p>
-
-  <p>
-    <strong>Quantity:</strong>
-    <%= item.quantity %>
-  </p>
-
-  <p>
-    <strong>Price:</strong>
-    <%= item.price %>
-  </p>
-    <%= form_with(url: cart_add_path) do |form| %>
-    <%= form.hidden_field :id, value: product.id %>
-    <%= form.number_field :quantity, value: item.quantity, min: 0, max: product.quantity%>
-    <%= form.submit "update quantity"%>
-  <% end %>
-
-  <%= form_with(url: cart_remove_path(@cart)) do |form| %>
-    <%= form.hidden_field :id, value: item.id %>
-    <%= form.submit "Remove item"%>
-  <% end %>
-
+<% if @cart.cart_items.present? %>
+  <div class="border rounded-4 overflow-hidden" style="width:710px;height:fit-content">
+    <table class="table m-0">
+      <thead>
+        <tr>
+          <th scope="col"
+            class="ps-5 align-middle fs-5 text-white fw-light bg-dark w-50"
+            style="--bs-bg-opacity: .5; height:78px;"
+            ><%= I18n.t('.carts.show.product') %></th>
+          </th>
+          <th scope="col"
+            class="align-middle fs-5 text-white fw-light bg-dark"
+            style="--bs-bg-opacity: .5;"
+            ><%= I18n.t('.carts.show.price') %></th>
+          </th>
+          <th scope="col"
+            class="align-middle fs-5 text-white fw-light bg-dark"
+            style="--bs-bg-opacity: .5;"
+            ><%= I18n.t('.carts.show.quantity') %></th>
+          </th>
+          <th scope="col"
+            class="align-middle fs-5 text-white fw-light bg-dark"
+            style="--bs-bg-opacity: .5;"
+            ><%= I18n.t('.carts.show.total') %></th>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cart.cart_items.each do |item| %>
+          <tr id="<%= dom_id(item) %>">
+            <td class="text-dark align-middle ps-3" style="height:119px;">
+              <div class="d-flex align-items-center">
+                <%= form_with url: cart_remove_path(@cart), data: { turbo_confirm: "Are you sure?" } do |form| %>
+                <%= form.hidden_field :id, value: item.id %>
+                <%= form.button nil, class:"btn-delete" do %>
+                  <i class="bi bi-x fs-5"></i>
+                <% end %>
+              <% end %>
+              <%= item.product.name %>
+              </div>
+            </td>
+            <td class="text-secondary align-middle">
+              <%= I18n.t('currency', price: sprintf('%.2f', item.product.price)) %>
+            </td>
+            <td class="text-secondary align-middle">
+              <%= item.quantity %>
+            </td>
+            <td class="text-secondary align-middle">
+              <%= I18n.t('currency', price: sprintf('%.2f', item.price)) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <div class="d-flex justify-content-center align-items-center fs-4 text-secondary" style="width:710px;height:434px;">
+    <%= I18n.t('.carts.show.no_products') %>
   </div>
 <% end %>
