@@ -1,7 +1,7 @@
 <tr id="<%= dom_id(item) %>">
   <td class="text-dark align-middle ps-3" style="height:119px;">
     <div class="d-flex align-items-center">
-      <%= form_with url: cart_remove_path(cart), data: { turbo_confirm: "Are you sure?" } do |form| %>
+      <%= form_with url: cart_remove_path(cart) do |form| %>
       <%= form.hidden_field :id, value: item.id %>
       <%= form.button nil, class:"btn-delete" do %>
         <i class="bi bi-x fs-5"></i>
