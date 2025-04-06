@@ -1,0 +1,13 @@
+pt-BR:
+  carts:
+    title: Total Carrinho
+    show:
+      subtotal: SUBTOTAL
+      discount: DESCONTO
+      total: TOTAL
+      checkout: Prosseguir com Check-out
+      product: Produto
+      price: Preço
+      quantity: Quantidade
+      total: Total
+      no_products: Nenhum produto no carrinho

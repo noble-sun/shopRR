@@ -161,3 +161,11 @@
 input[type=checkbox]:checked{
     accent-color: #3d3d3d;
 }
+
+.btn-delete {
+  background-color: transparent;
+  background-repeat:no-repeat;
+  border:none;
+  outline:none;
+  overflow:hidden;
+}

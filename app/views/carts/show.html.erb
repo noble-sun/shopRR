@@ -1,13 +1,12 @@
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+<div class="content-padding">
+  <div class="d-flex flex-row justify-content-between">
+    <%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
+    <%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
 
-<h1> Cart </h1>
-<h2> Cart for user <%= Current.user.email_address %> </h2>
+    <div id="cart_items_overview">
+      <%= render 'cart_items', local: @cart %>
+    </div>
 
-<%= render 'cart_items', local: @cart %>
-<p>
-  <strong> Total: </strong>
-  <%= @cart.total %>
-</p>
-
-<%= button_to 'Checkout', new_order_path, method: :get %>
+    <%= render 'cart_total_overview', local: @cart %>
+  </div>
+</div>

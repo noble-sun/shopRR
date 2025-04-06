@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :registrations, only: [ :new, :create ]
     resources :carts, only: [ :show ] do
       post "remove"
+      patch "update_item_quantity"
     end
     post "carts/add", to: "carts#add", as: "cart_add"
 
