@@ -1,0 +1,12 @@
+en:
+  orders:
+    new:
+      overview:
+        title: Order Details
+        product: PRODUCT
+        quantity: Quantity
+        subtotal: SUBTOTAL
+        shipping: SHIPPING
+        free_shipping: FREE
+        total: Total
+

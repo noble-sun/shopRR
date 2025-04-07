@@ -169,3 +169,8 @@ input[type=checkbox]:checked{
   outline:none;
   overflow:hidden;
 }
+
+#table_order_overview th, #table_order_overview td {
+  border-style: dashed;
+  background-color: #f9f9f9;
+}

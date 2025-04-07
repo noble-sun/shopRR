@@ -1,0 +1,11 @@
+pt-BR:
+  orders:
+    new:
+      overview:
+        title: Detalhes do Pedido
+        product: PRODUTO
+        quantity: Quantidade
+        subtotal: SUBTOTAL
+        shipping: FRETE
+        free_shipping: GRATIS
+        total: Total

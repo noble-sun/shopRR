@@ -1,0 +1,70 @@
+<div class="border rounded-4 overflow-hidden m-0 ms-4 p-0" style="width:500px;height:550px;">
+  <table id="table_order_overview" class="table m-0 h-100">
+    <thead>
+      <tr>
+        <th scope="col" colspan="3"
+          class="ps-4 align-middle fs-5 text-white fw-light bg-secondary"
+          style="--bs-bg-opacity: .7;"
+          ><%= I18n.t('.orders.new.overview.title') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row" class="ps-4 align-middle text-dark text-opacity-75 fw-light w-50">
+          <%= I18n.t('.orders.new.overview.product') %>
+        </th>
+        <th scope="row" class="ps-4 align-middle text-center text-dark text-opacity-75 fw-light">
+          <%= I18n.t('.orders.new.overview.quantity') %>
+        </th>
+        <th scope="row" class="pe-4 align-middle text-end text-dark text-opacity-75 fw-light">
+          <%= I18n.t('.orders.new.overview.subtotal') %>
+        </th>
+      </tr>
+      <tr><th class="border-0"></th><td class="border-0"></td><td class="border-0"></td></tr>
+      <% @cart.cart_items.each do |item| %>
+        <tr style="height:30px; border-bottom: none;border-top:none;">
+          <td scope="row" class="ps-4 py-1 align-middle text-secondary text-opacity-75 fw-light w-50"
+            style="border-bottom:none;border-top:none;"
+          >
+            <%= item.product.name %>
+          </td>
+          <td scope="row" class="p3-4 py-1 align-middle text-center text-secondary text-opacity-75 fw-light"
+            style="border-bottom:none;border-top:none;"
+            >
+            <%= item.quantity %>
+          </td>
+          <td scope="row" class="pe-4 py-1 align-middle text-end text-secondary text-opacity-75 fw-light"
+            style="border-bottom:none;border-top:none;"
+            >
+            <%= I18n.t('currency', price: sprintf('%.2f', item.price)) %>
+          </td>
+        </tr>
+      <% end %>
+      <tr><th></th><td></td><td></td></tr>
+      <tr>
+        <th scope="row" colspan="2" class="ps-4 align-middle text-dark text-opacity-75 fw-light">
+          <%= I18n.t('.orders.new.overview.subtotal') %>
+        </th>
+        <td class="pe-4 text-end align-middle text-secondary text-opacity-75 fw-light">
+          <%= I18n.t('currency', price: sprintf('%.2f', @cart.total)) %>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row" colspan="2" class="ps-4 align-middle text-dark text-opacity-75 fw-light">
+          <%= I18n.t('.orders.new.overview.shipping') %>
+        </th>
+        <td class="pe-4 text-end align-middle text-secondary text-opacity-75 fw-light">
+          <%= I18n.t('.orders.new.overview.free_shipping') %>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row" colspan="2" class="ps-4 align-middle text-dark text-opacity-75 fw-light">
+          <%= I18n.t('.orders.new.overview.total') %>
+        </th>
+        <td class="pe-4 text-end align-middle text-secondary text-opacity-75 fw-light">
+          <%= I18n.t('currency', price: sprintf('%.2f', @cart.total)) %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

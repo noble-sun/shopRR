@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @addresses = Current.user.addresses
+    @cart = Current.user.active_cart
   end
 
   def create
