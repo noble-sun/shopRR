@@ -25,8 +25,13 @@ class AddressesController < ApplicationController
 
     respond_to do |format|
       if @address.save
-        format.html { redirect_back_or_to @address, notice: "Address was successfully created." }
+        if request.referer&.include?("addresses/new")
+          format.html { redirect_to @address, notice: "Address was successfully created." }
+        else
+          format.html { redirect_back_or_to @address, notice: "Address was successfully created." }
+        end
         format.json { render :show, status: :created, location: @address }
+
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @address.errors, status: :unprocessable_entity }

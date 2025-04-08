@@ -1,12 +1,15 @@
 en:
   addresses:
-    title: Addresses
     street: Street
     number: Number
     neighborhood: Neighborhood
     city: City
     zipcode: CEP
     primary_address: default
+    new:
+      title: New Address
+    index:
+      title: Addresses
     buttons:
       new: New Address
       create: Add Address
