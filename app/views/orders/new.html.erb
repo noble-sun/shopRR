@@ -23,12 +23,15 @@
                     <span class="text-start"><%= "#{address.city} - #{address.state}" %></span>
                     <span class="text-start"><%= address.country %></span>
                     <div class="d-flex gap-2">
-                      <%= link_to I18n.t('.orders.buttons.edit'), edit_address_path(address),
+                      <%= link_to I18n.t('.orders.buttons.edit'),
+                        edit_address_path(address, return_to: request.fullpath),
                         class:"btn btn-outline-light w-100"
                       %>
-                      <%= link_to I18n.t('.orders.buttons.delete'), address_path(address),
-                        method: :delete, class:"btn btn-outline-light w-100"
-                      %>
+                      <div class="w-100">
+                        <%= button_to I18n.t('.orders.buttons.delete'), address_path(address),
+                          method: :delete, class:"btn btn-outline-light w-100"
+                        %>
+                      </div>
                     </div>
                   </div>
                 </label>
