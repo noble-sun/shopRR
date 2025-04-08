@@ -41,6 +41,7 @@
         <ul class="dropdown-menu dropdown-menu-end">
           <li><a class="dropdown-item" href="<%= orders_path %>"><%= I18n.t('.layouts.navbar.orders') %></a></li>
           <li><a class="dropdown-item" href="<%= reviews_path %>"><%= I18n.t('.layouts.navbar.reviews') %></a></li>
+          <li><a class="dropdown-item" href="<%= addresses_path %>"><%= I18n.t('.layouts.navbar.addresses') %></a></li>
           <li>
             <% if Current.user.seller? %>
               <%= link_to I18n.t('.layouts.navbar.your_products'), seller_products_path, class: "dropdown-item" %>
