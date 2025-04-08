@@ -6,6 +6,7 @@ en:
       deliver_here: Deliver Here
     new:
       select_address: "Select delivery address:"
+      new_address: Add a new address
       overview:
         title: Order Details
         product: PRODUCT
