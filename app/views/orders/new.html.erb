@@ -1,5 +1,43 @@
-<div>
-<p> Selecione endereco para entrega </p>
+<div class="d-flex flex-row content-padding">
+  <div style="width:710px;">
+    <% if @addresses %>
+      <p><%= I18n.t('.orders.new.select_address') %> </p>
 
-<%= render 'order_overview', cart: @cart %>
+      <%= form_with(model: @order, url: orders_path) do |form| %>
+        <div class="d-flex gap-3">
+          <% @addresses.each_with_index do |address, index| %>
+            <div id="<%= dom_id(address) %>">
+              <input
+              type="radio"
+              class="btn-check"
+              name="order[address_id]"
+              id="<%= "address-radio-#{index}" %>"
+              value="<%= address.id %>"
+              <%= "checked" if address.primary_address %>
+              >
+              <label class="btn btn-secondary px-3 py-2" for="<%= "address-radio-#{index}" %>">
+                <div class="d-flex flex-column justify-content-start">
+                  <span class="text-start"><%= "#{address.street}, #{address.number}" %></span>
+                  <span class="text-start"><%= "#{address.neighborhood}, #{address.zipcode}" %></span>
+                  <span class="text-start"><%= "#{address.city} - #{address.state}" %></span>
+                  <span class="text-start"><%= address.country %></span>
+                  <div class="d-flex gap-2">
+                    <%= link_to I18n.t('.orders.buttons.edit'), edit_address_path(address),
+                      class:"btn btn-outline-light w-100"
+                    %>
+                    <%= link_to I18n.t('.orders.buttons.delete'), address_path(address),
+                      method: :delete, class:"btn btn-outline-light w-100"
+                    %>
+                  </div>
+                </div>
+              </label>
+            </div>
+          <% end %>
+        </div>
+        <%= form.submit I18n.t('.orders.buttons.deliver_here'), class:"btn btn-dark mt-3" %>
+      <% end %>
+      <hr>
+    <% end %>
+  </div>
+  <%= render 'order_overview', cart: @cart %>
 </div>

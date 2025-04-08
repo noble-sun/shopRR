@@ -1,6 +1,11 @@
 pt-BR:
   orders:
+    buttons:
+      edit: Editar
+      delete: Deletar
+      deliver_here: Entregar Aqui
     new:
+      select_address: "Selecione o endereço para entrega:"
       overview:
         title: Detalhes do Pedido
         product: PRODUTO

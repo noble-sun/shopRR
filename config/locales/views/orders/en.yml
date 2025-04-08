@@ -1,6 +1,11 @@
 en:
   orders:
+    buttons:
+      edit: Edit
+      delete: Delete
+      deliver_here: Deliver Here
     new:
+      select_address: "Select delivery address:"
       overview:
         title: Order Details
         product: PRODUCT
