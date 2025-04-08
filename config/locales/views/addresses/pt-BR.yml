@@ -1,4 +1,12 @@
 pt-BR:
   addresses:
+    title: Endereços
+    street: Rua
+    number: Número
+    neighborhood: Bairro
+    city: Cidade
+    zipcode: CEP
+    primary_address: principal
     buttons:
+      new: Novo Endereço
       create: Adicionar Endereço
