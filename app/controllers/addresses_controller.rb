@@ -3,7 +3,7 @@ class AddressesController < ApplicationController
 
   # GET /addresses or /addresses.json
   def index
-    @addresses = Address.where(user: Current.user)
+    @addresses = Address.where(user: Current.user).order(primary_address: :desc)
   end
 
   # GET /addresses/1 or /addresses/1.json
