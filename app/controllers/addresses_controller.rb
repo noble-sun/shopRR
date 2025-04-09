@@ -57,7 +57,11 @@ class AddressesController < ApplicationController
     @address.destroy!
 
     respond_to do |format|
-      format.html { redirect_back_or_to addresses_path, status: :see_other, notice: "Address was successfully destroyed." }
+      if request.referer.match?(/addresses\/\d+/)
+        format.html { redirect_to addresses_path, status: :see_other, notice: "Address was successfully destroyed." }
+      else
+        format.html { redirect_back_or_to addresses_path, status: :see_other, notice: "Address was successfully destroyed." }
+      end
       format.json { head :no_content }
     end
   end
