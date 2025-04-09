@@ -1,13 +1,21 @@
-<% content_for :title, "Editing address" %>
+<div class="content-padding">
+<% content_for :title, I18n.t('.addresses.edit.title') %>
 
-<h1>Editing address</h1>
+  <h1><%= I18n.t('.addresses.edit.title') %></h1>
 
-<%= render "form", address: @address %>
+  <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="<%= addresses_path %>" class="link-secondary link-underline-opacity-0">
+          <%= I18n.t('.addresses.index.title') %>
+        </a>
+      </li>
+      <li class="breadcrumb-item active text-black" aria-current="page"> <%= I18n.t('.addresses.edit.title') %></li>
+    </ol>
+  </nav>
+  </div>
 
-<br>
-
-<div>
-  <%= link_to "Show this address", @address %> |
-  <%= link_to "Back to addresses", addresses_path %>
-  <%= button_to "Destroy this address", @address, method: :delete %>
+  <div class="d-flex justify-content-center">
+    <%= render "form", address: @address, submit_name: I18n.t('.addresses.buttons.edit') %>
+  </div>
 </div>

@@ -13,6 +13,8 @@ pt-BR:
     index:
       title: Endereços
       primary_address: principal
+    edit:
+      title: Editar Endereço
     buttons:
       new: Novo Endereço
       create: Adicionar Endereço
