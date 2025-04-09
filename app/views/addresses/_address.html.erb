@@ -1,42 +1,74 @@
-<div id="<%= dom_id address %>" class="d-inline-flex border rounded">
-  <p>
-    <strong>Street:</strong>
-    <%= address.street %>
-  </p>
+<div id="<%= dom_id address %>">
+  <div class="d-flex gap-4 mb-3">
+    <div class="d-flex flex-column w-75">
+      <label><%= I18n.t('.addresses.street') %></label>
+      <span class="d-flex align-items-center rounded-pill px-3 border border-secondary-subtle flex-fill text-secondary"
+        style="height:49px;background-color:#F8F8F8;"
+      >
+        <%= address.street %>
+      </span>
+    </div>
+    <div class="d-flex flex-column flex-fill">
+      <label><%= I18n.t('.addresses.number') %></label>
+      <span class="d-flex align-items-center rounded-pill px-3 border border-secondary-subtle flex-fill text-secondary"
+        style="height:49px;background-color:#F8F8F8;"
+      >
+        <%= address.number %>
+      </span>
+    </div>
+  </div>
 
-  <p>
-    <strong>Number:</strong>
-    <%= address.number %>
-  </p>
+  <div class="d-flex gap-4 mb-3">
+    <div class="d-flex flex-column flex-fill">
+      <label><%= I18n.t('.addresses.neighborhood') %></label>
+      <span class="d-flex align-items-center rounded-pill px-3 border border-secondary-subtle flex-fill text-secondary"
+        style="height:49px;background-color:#F8F8F8;"
+      >
+        <%= address.neighborhood %>
+      </span>
+    </div>
+    <div class="d-flex flex-column flex-fill">
+      <label><%= I18n.t('.addresses.zipcode') %></label>
+      <span class="d-flex align-items-center rounded-pill px-3 border border-secondary-subtle flex-fill text-secondary"
+        style="height:49px;background-color:#F8F8F8;"
+      >
+        <%= address.zipcode %>
+      </span>
+    </div>
+    <div class="d-flex flex-column w-25">
+      <label><%= I18n.t('.addresses.primary_address') %></label>
+      <span class="d-flex align-items-center rounded-pill px-3 border border-secondary-subtle flex-fill text-secondary"
+        style="height:49px;background-color:#F8F8F8;"
+      >
+      <%= address.primary_address ? 'Yes' : 'No' %>
+      </span>
+    </div>
+  </div>
 
-  <p>
-    <strong>Neighborhood:</strong>
-    <%= address.neighborhood %>
-  </p>
-
-  <p>
-    <strong>City:</strong>
-    <%= address.city %>
-  </p>
-
-  <p>
-    <strong>State:</strong>
-    <%= address.state %>
-  </p>
-
-  <p>
-    <strong>Zipcode:</strong>
-    <%= address.zipcode %>
-  </p>
-
-  <p>
-    <strong>Country:</strong>
-    <%= address.country %>
-  </p>
-
-  <p>
-    <strong>Primary address:</strong>
-    <%= address.primary_address %>
-  </p>
-
+  <div class="d-flex gap-4 mb-3">
+    <div class="d-flex flex-column flex-fill">
+      <label><%= I18n.t('.addresses.city') %></label>
+      <span class="d-flex align-items-center rounded-pill px-3 border border-secondary-subtle flex-fill text-secondary"
+        style="height:49px;background-color:#F8F8F8;"
+      >
+        <%= address.city %>
+      </span>
+    </div>
+    <div class="d-flex flex-column w-25">
+      <label><%= I18n.t('.addresses.state') %></label>
+      <span class="d-flex align-items-center rounded-pill px-3 border border-secondary-subtle flex-fill text-secondary"
+        style="height:49px;background-color:#F8F8F8;"
+      >
+        <%= address.state %>
+      </span>
+    </div>
+    <div class="d-flex flex-column w-25">
+      <label><%= I18n.t('.addresses.country') %></label>
+      <span class="d-flex align-items-center rounded-pill px-3 border border-secondary-subtle flex-fill text-secondary"
+        style="height:49px;background-color:#F8F8F8;"
+      >
+        <%= address.country %>
+      </span>
+    </div>
+  </div>
 </div>

@@ -1,0 +1,18 @@
+en:
+  orders:
+    buttons:
+      edit: Edit
+      delete: Delete
+      deliver_here: Deliver Here
+    new:
+      select_address: "Select delivery address:"
+      new_address: Add a new address
+      overview:
+        title: Order Details
+        product: PRODUCT
+        quantity: Quantity
+        subtotal: SUBTOTAL
+        shipping: SHIPPING
+        free_shipping: FREE
+        total: Total
+

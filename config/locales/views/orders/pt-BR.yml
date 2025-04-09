@@ -1,0 +1,17 @@
+pt-BR:
+  orders:
+    buttons:
+      edit: Editar
+      delete: Deletar
+      deliver_here: Entregar Aqui
+    new:
+      select_address: "Selecione o endereço para entrega:"
+      new_address: Adicione um novo endereço
+      overview:
+        title: Detalhes do Pedido
+        product: PRODUTO
+        quantity: Quantidade
+        subtotal: SUBTOTAL
+        shipping: FRETE
+        free_shipping: GRATIS
+        total: Total

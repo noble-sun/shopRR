@@ -1,10 +1,27 @@
-<p style="color: green"><%= notice %></p>
+<div class="content-padding">
+  <p style="color: green"><%= notice %></p>
 
-<%= render @address %>
+  <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="<%= addresses_path %>" class="link-secondary link-underline-opacity-0">
+          <%= I18n.t('.addresses.index.title') %>
+        </a>
+      </li>
+      <li class="breadcrumb-item active text-black" aria-current="page"> <%= @address.street %></li>
+    </ol>
+  </nav>
+  <%= render @address %>
 
-<div>
-  <%= link_to "Edit this address", edit_address_path(@address) %> |
-  <%= link_to "Back to addresses", addresses_path %>
-
-  <%= button_to "Destroy this address", @address, method: :delete %>
+  <div class="d-flex gap-3 justify-content-end">
+    <%= link_to I18n.t('.addresses.buttons.edit'), edit_address_path(@address),
+      class:"d-flex jusfity-content-center align-items-center btn btn-dark rounded-pill px-4",
+      style:"height:49px;width:fit-content;"
+    %>
+    <%= button_to I18n.t('.addresses.buttons.delete'), address_path(@address),
+      method: :delete,
+      class:"d-flex jusfity-content-center align-items-center btn btn-secondary rounded-pill px-4",
+      style:"height:49px;width:fit-content;"
+    %>
+  </div>
 </div>

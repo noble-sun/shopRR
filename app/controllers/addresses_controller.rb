@@ -3,7 +3,7 @@ class AddressesController < ApplicationController
 
   # GET /addresses or /addresses.json
   def index
-    @addresses = Address.where(user: Current.user)
+    @addresses = Address.where(user: Current.user).order(primary_address: :desc)
   end
 
   # GET /addresses/1 or /addresses/1.json
@@ -25,8 +25,13 @@ class AddressesController < ApplicationController
 
     respond_to do |format|
       if @address.save
-        format.html { redirect_to @address, notice: "Address was successfully created." }
+        if request.referer&.include?("addresses/new")
+          format.html { redirect_to @address, notice: "Address was successfully created." }
+        else
+          format.html { redirect_back_or_to @address, notice: "Address was successfully created." }
+        end
         format.json { render :show, status: :created, location: @address }
+
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @address.errors, status: :unprocessable_entity }
@@ -38,7 +43,7 @@ class AddressesController < ApplicationController
   def update
     respond_to do |format|
       if @address.update(address_params)
-        format.html { redirect_to @address, notice: "Address was successfully updated." }
+        format.html { redirect_to params[:address][:return_to].presence || @address, notice: "Address was successfully updated." }
         format.json { render :show, status: :ok, location: @address }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +57,11 @@ class AddressesController < ApplicationController
     @address.destroy!
 
     respond_to do |format|
-      format.html { redirect_to addresses_path, status: :see_other, notice: "Address was successfully destroyed." }
+      if request.referer.match?(/addresses\/\d+/)
+        format.html { redirect_to addresses_path, status: :see_other, notice: "Address was successfully destroyed." }
+      else
+        format.html { redirect_back_or_to addresses_path, status: :see_other, notice: "Address was successfully destroyed." }
+      end
       format.json { head :no_content }
     end
   end

@@ -1,4 +1,4 @@
-<%= form_with(model: address) do |form| %>
+<%= form_with(model: address, local: false) do |form| %>
   <% if address.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(address.errors.count, "error") %> prohibited this address from being saved:</h2>
@@ -12,48 +12,78 @@
   <% end %>
 
   <%= form.hidden_field :user_id, value: Current.user.id %>
+  <%= form.hidden_field :return_to, value: params[:return_to] %>
 
-  <div>
-    <%= form.label :street, style: "display: block" %>
-    <%= form.text_field :street %>
+  <div class="d-flex gap-3">
+    <div class="d-flex flex-column flex-fill">
+      <%= form.label :street, style:"color:#3D3D3D;" %>
+      <%= form.text_field :street,
+        class:"border border-gray focus-ring focus-ring-dark px-3 rounded-4 w-100",
+        style:"height:43px;"
+      %>
+    </div>
+
+    <div class="d-flex flex-column mb-4">
+      <%= form.label :number, style:"color:#3D3D3D;" %>
+      <%= form.number_field :number,
+        class:"border border-gray focus-ring focus-ring-dark px-3 rounded-4 flex-fill",
+        style:"height:43px;"
+      %>
+    </div>
+  </div>
+
+  <div class="d-flex flex-column mb-4">
+    <%= form.label :neighborhood, style:"color:#3D3D3D;" %>
+    <%= form.text_field :neighborhood,
+      class:"border border-gray focus-ring focus-ring-dark px-3 rounded-4 w-100",
+      style:"height:43px;"
+    %>
+  </div>
+
+  <div class="d-flex flex-column mb-4">
+    <%= form.label :city, style:"color:#3D3D3D;" %>
+    <%= form.text_field :city,
+      class:"border border-gray focus-ring focus-ring-dark px-3 rounded-4 w-100",
+      style:"height:43px;"
+    %>
+  </div>
+
+  <div class="d-flex flex-column mb-4">
+    <%= form.label :state, style:"color:#3D3D3D;" %>
+    <%= form.text_field :state,
+      class:"border border-gray focus-ring focus-ring-dark px-3 rounded-4 w-100",
+      style:"height:43px;"
+    %>
+  </div>
+
+  <div class="d-flex flex-column mb-4">
+    <%= form.label :zipcode, style:"color:#3D3D3D;" %>
+    <%= form.text_field :zipcode,
+      class:"border border-gray focus-ring focus-ring-dark px-3 rounded-4 w-100",
+      style:"height:43px;"
+    %>
+  </div>
+
+  <div class="d-flex flex-column mb-4">
+    <%= form.label :country, style:"color:#3D3D3D;" %>
+    <%= form.text_field :country,
+      class:"border border-gray focus-ring focus-ring-dark px-3 rounded-4 w-100",
+      style:"height:43px;"
+    %>
+  </div>
+
+  <div class="d-flex mb-4">
+    <%= form.check_box :primary_address %>
+    <%= form.label :primary_address,
+      class:"ms-3",
+      style: "color:#3d3d3d;"
+    %>
   </div>
 
   <div>
-    <%= form.label :number, style: "display: block" %>
-    <%= form.number_field :number %>
-  </div>
-
-  <div>
-    <%= form.label :neighborhood, style: "display: block" %>
-    <%= form.text_field :neighborhood %>
-  </div>
-
-  <div>
-    <%= form.label :city, style: "display: block" %>
-    <%= form.text_field :city %>
-  </div>
-
-  <div>
-    <%= form.label :state, style: "display: block" %>
-    <%= form.text_field :state %>
-  </div>
-
-  <div>
-    <%= form.label :zipcode, style: "display: block" %>
-    <%= form.text_field :zipcode %>
-  </div>
-
-  <div>
-    <%= form.label :country, style: "display: block" %>
-    <%= form.text_field :country %>
-  </div>
-
-  <div>
-    <%= form.label :primary_address, style: "display: block" %>
-    <%= form.checkbox :primary_address %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit submit_name,
+      class:"btn btn-dark rounded-pill px-3",
+      style:"height:49px;"
+    %>
   </div>
 <% end %>

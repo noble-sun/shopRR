@@ -1,0 +1,22 @@
+en:
+  addresses:
+    street: Street
+    number: Number
+    neighborhood: Neighborhood
+    city: City
+    state: State
+    country: Country
+    zipcode: CEP
+    primary_address: Primary Address?
+    new:
+      title: New Address
+    index:
+      title: Addresses
+      primary_address: default
+    edit:
+      title: Edit Address
+    buttons:
+      new: New Address
+      create: Add Address
+      edit: Edit Address
+      delete: Delete Address
