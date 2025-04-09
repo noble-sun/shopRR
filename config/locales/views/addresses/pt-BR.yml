@@ -4,12 +4,17 @@ pt-BR:
     number: Número
     neighborhood: Bairro
     city: Cidade
+    state: Estado
+    country: País
     zipcode: CEP
-    primary_address: principal
+    primary_address: Endereço Principal?
     new:
       title: Novo Endereço
     index:
       title: Endereços
+      primary_address: principal
     buttons:
       new: Novo Endereço
       create: Adicionar Endereço
+      edit: Editar Endereço
+      delete: Deletar Endereço
