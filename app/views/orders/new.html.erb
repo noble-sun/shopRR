@@ -53,7 +53,7 @@
       <%= I18n.t('.orders.new.new_address') %>
       </h2>
       <div class="p-4">
-        <%= render 'addresses/form', address: Address.new %>
+        <%= render 'addresses/form', address: Address.new, submit_name: I18n.t('.addresses.buttons.create') %>
       </div>
     </div>
   </div>
