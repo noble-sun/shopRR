@@ -5,9 +5,9 @@
         <p><%= I18n.t('.orders.new.select_address') %> </p>
 
         <%= form_with(model: @order, url: orders_path) do |form| %>
-          <div class="d-flex gap-3">
+          <div class="d-flex gap-3 flex-wrap">
             <% @addresses.each_with_index do |address, index| %>
-              <div id="<%= dom_id(address) %>">
+              <div id="<%= dom_id(address) %>" class="d-flex" style="width:222px;">
                 <input
                 type="radio"
                 class="btn-check"
@@ -16,13 +16,15 @@
                 value="<%= address.id %>"
                 <%= "checked" if address.primary_address %>
                 >
-                <label class="btn btn-secondary px-3 py-2" for="<%= "address-radio-#{index}" %>">
-                  <div class="d-flex flex-column justify-content-start">
+                <label class="btn btn-secondary px-3 py-2 flex-fill" for="<%= "address-radio-#{index}" %>">
+                  <div class="d-flex flex-column justify-content-start align-items-end" style="height:100%;">
+                    <div class="d-flex flex-column w-100">
                     <span class="text-start"><%= "#{address.street}, #{address.number}" %></span>
                     <span class="text-start"><%= "#{address.neighborhood}, #{address.zipcode}" %></span>
                     <span class="text-start"><%= "#{address.city} - #{address.state}" %></span>
                     <span class="text-start"><%= address.country %></span>
-                    <div class="d-flex gap-2">
+                    </div>
+                    <div class="d-flex gap-2 mt-auto w-100">
                       <%= link_to I18n.t('.orders.buttons.edit'),
                         edit_address_path(address, return_to: request.fullpath),
                         class:"btn btn-outline-light w-100"
