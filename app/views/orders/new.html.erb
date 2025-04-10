@@ -4,7 +4,7 @@
       <% if @addresses %>
         <p><%= I18n.t('.orders.new.select_address') %> </p>
 
-        <%= form_with(model: @order, url: orders_path) do |form| %>
+        <%= form_with model: @order, url: orders_path do |form| %>
           <div class="d-flex gap-3 flex-wrap">
             <% @addresses.each_with_index do |address, index| %>
               <div id="<%= dom_id(address) %>" class="d-flex" style="width:222px;">
@@ -30,8 +30,8 @@
                         class:"btn btn-outline-light w-100"
                       %>
                       <div class="w-100">
-                        <%= button_to I18n.t('.orders.buttons.delete'), address_path(address),
-                          method: :delete, class:"btn btn-outline-light w-100"
+                        <%= link_to I18n.t('.orders.buttons.delete'), address_path(address),
+                          data: { turbo_method: :delete }, class:"btn btn-outline-light w-100"
                         %>
                       </div>
                     </div>
@@ -39,8 +39,8 @@
                 </label>
               </div>
             <% end %>
+            <%= form.submit I18n.t('.orders.buttons.deliver_here'), class:"btn btn-dark mt-3 px-3 rounded-pill", style:"height:49px;" %>
           </div>
-          <%= form.submit I18n.t('.orders.buttons.deliver_here'), class:"btn btn-dark mt-3 px-3 rounded-pill", style:"height:49px;" %>
         <% end %>
         <hr class="my-4">
       <% end %>
