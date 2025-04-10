@@ -15,4 +15,13 @@ en:
         shipping: SHIPPING
         free_shipping: FREE
         total: Total
-
+    index:
+      title: Orders
+      order: Order
+      items: Items
+      status: Status
+      tracking: Tracking
+      delivery_date: Delivery Date
+      price: Price
+      no_tracking: Not available
+      details: Details

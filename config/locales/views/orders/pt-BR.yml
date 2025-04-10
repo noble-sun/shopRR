@@ -15,3 +15,13 @@ pt-BR:
         shipping: FRETE
         free_shipping: GRATIS
         total: Total
+    index:
+      title: Pedidos
+      order: Pedido
+      items: Itens
+      status: Status
+      tracking: Rastreamento
+      delivery_date: Data de Entrega
+      price: Valor
+      no_tracking: Não informado
+      details: Detalhes
