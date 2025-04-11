@@ -28,6 +28,11 @@ class OrdersController < ApplicationController
     end
   end
 
+  def show
+    @order = Order.includes(:address, cart: { cart_items: :product }).find_by(id: params.expect(:id), user: Current.user)
+    @cart = @order.cart
+  end
+
   private
 
   def order_params

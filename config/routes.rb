@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   scope "(:locale)", locale: /pt-BR|en/ do
-    resources :orders, only: [ :new, :create, :index ]
+    resources :orders, only: [ :new, :create, :index, :show ]
     resources :addresses
     resource :session, only: [ :new, :create, :destroy ]
     resources :passwords, param: :token

@@ -15,4 +15,26 @@ en:
         shipping: SHIPPING
         free_shipping: FREE
         total: Total
-
+    index:
+      title: Orders
+      order: Order
+      items: Items
+      status: Status
+      tracking: Tracking
+      delivery_date: Delivery Date
+      price: Price
+      no_tracking: Not available
+      details: Details
+    show:
+      title: "Order Nº %{order}"
+      products: Products
+      shipping_address: Shipping Address
+      status: Status
+      street: Street
+      number: Number
+      neighborhood: Neighborhood
+      zipcode: Zipcode
+      city: City
+      state: State
+      country: Country
+      expected_delivery: Expected Delivery

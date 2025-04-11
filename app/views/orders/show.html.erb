@@ -1,0 +1,148 @@
+<div class="content-padding">
+  <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="<%= orders_path %>" class="link-secondary link-underline-opacity-0">
+          <%= I18n.t('.orders.index.title') %>
+        </a>
+      </li>
+      <li class="breadcrumb-item active text-black" aria-current="page"><%= I18n.t('.orders.show.title', order: @order.id)%></li>
+    </ol>
+  </nav>
+   
+  <h1 class="mb-3"><%= I18n.t('.orders.show.title', order: @order.id)%></h1>
+
+  <div class="mb-4">
+    <div class="border rounded overflow-hidden w-50" style="height:fit-content">
+      <table class="table m-0">
+        <thead>
+          <tr>
+            <th scope="col"
+              class="align-middle text-center fs-5 text-white fw-light bg-dark"
+              style="--bs-bg-opacity: .5; height:54px;"
+              ><%= I18n.t('.orders.show.status') %></th>
+            <th scope="col"
+              class="align-middle text-center fs-5 text-white fw-light bg-dark"
+              style="--bs-bg-opacity: .5; height:54px;"
+              ><%= I18n.t('.orders.show.expected_delivery') %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-center p-3 text-secondary">
+              <%= I18n.t("activerecord.attributes.order.status.#{@order.status}") %>
+            </td>
+            <td class="text-center p-3 text-secondary">
+              <%= I18n.l(@order.created_at.to_date + 10.days, format: :default) %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <h2 class="fs-4 fw-bold mb-3"> <%= I18n.t('.orders.show.shipping_address') %> </h2>
+    <div class="border rounded overflow-hidden" style="height:fit-content">
+      <table class="table m-0">
+        <thead>
+          <tr>
+            <th scope="col"
+              class="align-middle text-center fs-5 text-white fw-light bg-dark"
+              style="--bs-bg-opacity: .5; height:54px;"
+              ><%= I18n.t('.orders.show.street') %></th>
+            <th scope="col"
+              class="align-middle text-center fs-5 text-white fw-light bg-dark"
+              style="--bs-bg-opacity: .5; height:54px;"
+              ><%= I18n.t('.orders.show.number') %></th>
+            <th scope="col"
+              class="align-middle text-center fs-5 text-white fw-light bg-dark"
+              style="--bs-bg-opacity: .5; height:54px;"
+              ><%= I18n.t('.orders.show.neighborhood') %></th>
+            <th scope="col"
+              class="align-middle text-center fs-5 text-white fw-light bg-dark"
+              style="--bs-bg-opacity: .5; height:54px;"
+              ><%= I18n.t('.orders.show.zipcode') %></th>
+            <th scope="col"
+              class="align-middle text-center fs-5 text-white fw-light bg-dark"
+              style="--bs-bg-opacity: .5; height:54px;"
+              ><%= I18n.t('.orders.show.city') %></th>
+            <th scope="col"
+              class="align-middle text-center fs-5 text-white fw-light bg-dark"
+              style="--bs-bg-opacity: .5; height:54px;"
+              ><%= I18n.t('.orders.show.state') %></th>
+            <th scope="col"
+              class="align-middle text-center fs-5 text-white fw-light bg-dark"
+              style="--bs-bg-opacity: .5; height:54px;"
+              ><%= I18n.t('.orders.show.country') %></th>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <% address = @order.address %>
+            <td class="text-center p-3 text-secondary"><%= address.street %></td>
+            <td class="text-center p-3 text-secondary"><%= address.number %></td>
+            <td class="text-center p-3 text-secondary"><%= address.neighborhood %></td>
+            <td class="text-center p-3 text-secondary"><%= address.zipcode %></td>
+            <td class="text-center p-3 text-secondary"><%= address.city %></td>
+            <td class="text-center p-3 text-secondary"><%= address.state %></td>
+            <td class="text-center p-3 text-secondary"><%= address.country %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div>
+    <h2 class="fs-4 fw-bold mb-3"> <%= I18n.t('.orders.show.products') %> </h2>
+    <div class="border rounded overflow-hidden" style="height:fit-content">
+      <table class="table m-0">
+        <thead>
+          <tr>
+            <th scope="col"
+              class="ps-5 align-middle text-center fs-5 text-white fw-light bg-dark w-50"
+              style="--bs-bg-opacity: .5; height:54px;"
+              ><%= I18n.t('.carts.show.product') %></th>
+            </th>
+            <th scope="col"
+              class="align-middle text-center fs-5 text-white fw-light bg-dark"
+              style="--bs-bg-opacity: .5;"
+              ><%= I18n.t('.carts.show.price') %></th>
+            </th>
+            <th scope="col"
+              class="align-middle text-center fs-5 text-white fw-light bg-dark"
+              style="--bs-bg-opacity: .5;"
+              ><%= I18n.t('.carts.show.quantity') %></th>
+            </th>
+            <th scope="col"
+              class="align-middle text-center fs-5 text-white fw-light bg-dark"
+              style="--bs-bg-opacity: .5;"
+              ><%= I18n.t('.carts.show.total') %></th>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart.cart_items.each do |item| %>
+            <tr>
+              <td class="p-3">
+                <%= link_to product_path(item.product), class:"link-underline-opacity-0 link-secondary fs-5" do %>
+                  <%= image_tag item.product.images.first, class: "img-thumbnail object-fit-cover me-3", style:"height:125px;width:125px;" %>
+                  <%= item.product.name %>
+                <% end %>
+              </td>
+              <td class="p-3 fs-5 text-secondary align-middle text-center">
+                <%= I18n.t('currency', price: sprintf('%.2f', item.product.price)) %>
+              </td>
+              <td class="p-3 fs-5 text-secondary align-middle text-center">
+                  <%= item.quantity %>
+              </td>
+              <td class="p-3 fs-5 text-secondary align-middle text-center">
+                <%= I18n.t('currency', price: sprintf('%.2f', item.price)) %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

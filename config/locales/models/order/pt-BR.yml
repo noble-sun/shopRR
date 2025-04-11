@@ -9,7 +9,7 @@ pt-BR:
         address_id: ID Endereço
         cart_id: ID Carrinho
         user_id: ID Usuário
-        order/status:
+        status:
           pending: Pendente
           awaiting_payment: Aguardando pagamento
           paid: Pago

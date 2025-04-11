@@ -1,0 +1,13 @@
+en:
+  activerecord:
+    attributes:
+      order:
+        status:
+          pending: Pending
+          awaiting_payment: Awaiting Payment
+          paid: Paid
+          failed: Failed
+          processing: Processing
+          shipped: Shipped
+          canceled: Canceled
+          finished: Finished

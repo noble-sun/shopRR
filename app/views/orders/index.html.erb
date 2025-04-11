@@ -1,18 +1,83 @@
-<% content_for :title, "Orders" %>
+<div class="content-padding">
+  <% content_for :title, I18n.t('.orders.index.title') %>
 
-<h1>Orders</h1>
+  <h1 class="mb-4"><%= I18n.t('.orders.index.title') %></h1>
 
-<div id="orders" class="d-flex flex-column">
-  <% @orders.each do |order| %>
-    <div class="d-inline-flex border rounded m-2 p-2">
-      <p>
-        <strong> Order number: </strong>
-        <%= order.id %>
-      </p>
-      <p>
-        <strong> status: </strong>
-        <%= order.status %>
-      </p>
-    </div>
-  <% end %>
+  <div class="border rounded overflow-hidden" style="height:fit-content">
+    <table class="table m-0">
+      <thead>
+        <tr>
+          <th scope="col"
+            class="ps-5 align-middle fs-5 text-white bg-dark"
+            style="--bs-bg-opacity: .5; height:54px;"
+            ><%= I18n.t('.orders.index.order') %></th>
+          </th>
+          <th scope="col"
+            class="align-middle fs-5 text-white bg-dark"
+            style="--bs-bg-opacity: .5;"
+            ><%= I18n.t('.orders.index.items') %></th>
+          </th>
+          <th scope="col"
+            class="align-middle fs-5 text-white bg-dark"
+            style="--bs-bg-opacity: .5;"
+            ><%= I18n.t('.orders.index.status') %></th>
+          </th>
+          <th scope="col"
+            class="align-middle fs-5 text-white bg-dark"
+            style="--bs-bg-opacity: .5;"
+            ><%= I18n.t('.orders.index.tracking') %></th>
+          </th>
+          <th scope="col"
+            class="align-middle fs-5 text-white bg-dark"
+            style="--bs-bg-opacity: .5;"
+            ><%= I18n.t('.orders.index.delivery_date') %></th>
+          </th>
+          <th scope="col"
+            class="align-middle fs-5 text-white bg-dark"
+            style="--bs-bg-opacity: .5;"
+            ><%= I18n.t('.orders.index.price') %></th>
+          </th>
+          <th scope="col"
+            class="align-middle fs-5 text-white bg-dark"
+            style="--bs-bg-opacity: .5;"
+            ></th>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+            <td class="text-secondary align-middle ps-5">
+              <%= order.id %>
+            </td>
+            <td class="text-secondary align-middle">
+              <% order.cart.products.each do |product| %>
+                <p class="m-0 p-0" style="font-size:14px;"> <%= product.name %> </p>
+              <% end %>
+            </td>
+            <td class="text-secondary align-middle">
+              <div class="bg-secondary-subtle rounded"
+                style="width:fit-content;height:fit-content;padding:8px 12px;font-size:14px;"
+              >
+                <i class="bi bi-clock pe-1"></i>
+                <%= I18n.t("activerecord.attributes.order.status.#{order.status}") %>
+              </div>
+            </td>
+            <td class="text-secondary align-middle">
+              <%= I18n.t('.orders.index.no_tracking') %>
+            </td>
+            <td class="text-secondary align-middle">
+              <%= I18n.l(order.created_at.to_date + 10.days, format: :default) %>
+            </td>
+            <td class="align-middle">
+              <%= I18n.t('currency', price: sprintf('%.2f', order.cart.total)) %>
+            </td>
+            <td class="align-middle">
+              <%= link_to I18n.t('.orders.index.details'), order_path(order), class:"text-secondary" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
