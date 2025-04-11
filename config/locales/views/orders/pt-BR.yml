@@ -25,3 +25,16 @@ pt-BR:
       price: Valor
       no_tracking: Não informado
       details: Detalhes
+    show:
+      title: "Pedido Nº %{order}"
+      products: Produtos
+      shipping_address: Endereço de Entrega
+      status: Status
+      street: Rua
+      number: Número
+      neighborhood: Bairro
+      zipcode: CEP
+      city: Cidade
+      state: Estado
+      country: País
+      expected_delivery: Previsão de Entrega

@@ -72,8 +72,8 @@
             <td class="align-middle">
               <%= I18n.t('currency', price: sprintf('%.2f', order.cart.total)) %>
             </td>
-            <td class="text-secondary align-middle text-decoration-underline">
-              <%= I18n.t('.orders.index.details') %>
+            <td class="align-middle">
+              <%= link_to I18n.t('.orders.index.details'), order_path(order), class:"text-secondary" %>
             </td>
           </tr>
         <% end %>
