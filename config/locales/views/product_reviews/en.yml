@@ -11,3 +11,8 @@ en:
     buttons:
       review: Post Review
       edit: Edit review
+    index:
+      title: My Reviews
+      product: Product
+      rating: Rating
+      comment: Comment
