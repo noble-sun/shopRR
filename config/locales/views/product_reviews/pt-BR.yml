@@ -11,3 +11,8 @@ pt-BR:
     buttons:
       review: Avaliar
       edit: Editar avaliação
+    index:
+      title: Minhas Avaliações
+      product: Produto
+      rating: Avaliação
+      comment: Comentário

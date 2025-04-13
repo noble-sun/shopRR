@@ -20,7 +20,7 @@
     <h2 class="text-secondary fs-3 mb-4"><%= I18n.t('product_reviews.title') %></h2>
 
     <% if @reviews.exists? %>
-    <div>
+    <div id="reviews">
       <% @reviews.each do |review| %>
         <div class="border border-secondary-subtle rounded-4 w-100 p-3 mb-4">
           <div class="d-flex justify-content-between">

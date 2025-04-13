@@ -1,27 +1,55 @@
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+<div class="content-padding">
+  <%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
+  <%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
 
-<% content_for :title, "Your Reviews" %>
+  <% content_for :title, I18n.t('.product_reviews.index.title') %>
 
-<h1>Your Reviews</h1>
+  <h1 class="mb-4"><%= I18n.t('.product_reviews.index.title') %></h1>
 
-<div class="container">
-  <% @product_reviews.each do |review| %>
-    <div>
-      <p>
-        <strong>Product: </strong>
-        <%= review.product.name %>
-      </p>
-
-      <p>
-        <strong>Review: </strong>
-        <%= review.score %>
-      </p>
-
-      <p>
-        <strong>Comment: </strong>
-        <%= review.comment %>
-      </p>
+  <div>
+    <div class="border rounded overflow-hidden" style="height:fit-content">
+      <table class="table m-0">
+        <thead>
+          <tr>
+            <th scope="col"
+              class="ps-5 align-middle text-center fs-5 text-white fw-light bg-dark w-25"
+              style="--bs-bg-opacity: .5; height:54px;"
+              ><%= I18n.t('.product_reviews.index.product') %></th>
+            </th>
+            <th scope="col"
+              class="align-middle text-center fs-5 text-white fw-light bg-dark w-25"
+              style="--bs-bg-opacity: .5;"
+              ><%= I18n.t('.product_reviews.index.rating') %></th>
+            </th>
+            <th scope="col"
+              class="align-middle text-center fs-5 text-white fw-light bg-dark"
+              style="--bs-bg-opacity: .5;"
+              ><%= I18n.t('.product_reviews.index.comment') %></th>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @product_reviews.each do |review| %>
+            <tr>
+              <td class="p-3">
+                <%= link_to product_path(review.product, anchor: "reviews"), class:"link-underline-opacity-0 link-secondary" do %>
+                  <%= image_tag review.product.images.first,
+                    class: "img-thumbnail object-fit-cover me-3",
+                    style:"height:75px;width:75px;"
+                  %>
+                  <%= review.product.name %>
+                <% end %>
+              </td>
+              <td class="p-3 text-secondary align-middle text-center">
+                <%= review.score %>
+              </td>
+              <td class="p-3 text-secondary align-middle text-center">
+                  <%= review.comment %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
-  <% end %>
+  </div>
 </div>
