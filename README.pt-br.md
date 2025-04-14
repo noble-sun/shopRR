@@ -14,6 +14,13 @@ Um ***Shop*** online feito com ***R***uby on ***R***ails.
 - **Autenticação:** [Google Oauth2](https://developers.google.com/identity/openid-connect/openid-connect)
 - **Testes:** [Rspec](https://rspec.info/)
 
+### Design
+
+Não tenho olho para design, então procurei alguns exemplos para seguir.
+Este projeto é baseado em dois designs no Figma:
+ - [Multipurpose Ecommerce Website Lo-fi Template](https://www.figma.com/design/gvujHZbH7dyjiQa7yxF8tH/Multipurpose-Ecommerce-Website-Lo-fi-Template--Community-?node-id=0-1&p=f&t=YxeEfXS13WfS94Vi-0) de [Xperienced](https://www.instagram.com/xperienceddesign/)
+ - [Shopping Ecommerce Website UI](https://www.figma.com/design/DCvK0m2Xnm8DJheyObRuN4/Shopping-Ecommerce-Website-UI--Community-?node-id=113-7674&p=f&t=PM7mtW8R97kr60sq-0) de [Dennis Nzioki](https://dennisnzioki.com/)
+
 # Construção e Instalação
 
 ### Pré-requisitos
@@ -77,6 +84,7 @@ rspec
 # O que vem a seguir para o Shoprr
 - [x] Login com Google
 - [ ] Fluxo de checkout completo
+- [ ] Ciclo de vida do pedido
 - [ ] Cupons
 - [ ] Área do vendedor
 - [ ] Favoritar produtos
@@ -86,4 +94,7 @@ rspec
 - [ ] Variações de produtos
 - [x] Avaliação e comentários de produtos
 - [x] Seleção de idioma
+
+Também tenho outras tarefas de qualidade de código que quero fazer, como refatorar várias classes, adicionar mais testes e melhorar a estrutura de arquivos do projeto.
+
 ---
