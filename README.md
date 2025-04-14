@@ -15,6 +15,13 @@ A online ***Shop*** made with ***R***uby on ***R***ails.
 - **Authentication:** [Google Oauth2](https://developers.google.com/identity/openid-connect/openid-connect)
 - **Tests:** [Rspec](https://rspec.info/)
 
+### Design
+
+I have no eye for design, so i look for examples to follow.
+This project is based on two figma designs:
+ - [Multipurpose Ecommerce Website Lo-fi Template](https://www.figma.com/design/gvujHZbH7dyjiQa7yxF8tH/Multipurpose-Ecommerce-Website-Lo-fi-Template--Community-?node-id=0-1&p=f&t=YxeEfXS13WfS94Vi-0) by [Xperienced](https://www.instagram.com/xperienceddesign/)
+ - [Shopping Ecommerce Website UI](https://www.figma.com/design/DCvK0m2Xnm8DJheyObRuN4/Shopping-Ecommerce-Website-UI--Community-?node-id=113-7674&p=f&t=PM7mtW8R97kr60sq-0) by [Dennis Nzioki](https://dennisnzioki.com/)
+
 # Build and Instalation
 
 ### Prerequisites
@@ -78,6 +85,7 @@ rspec
 # What's next for Shoprr
 - [x] Login with Google
 - [ ] A proper cart checkout
+- [ ] Order lifecycle
 - [ ] Cupons
 - [ ] Seller area
 - [ ] Favoriter products
@@ -87,4 +95,7 @@ rspec
 - [ ] Product variations
 - [x] Product review and comments
 - [x] Language selection
+
+I also have other miscellaneous things i want to do like refactoring several classes, adding more tests and improve the file structure of the project
+
 ---
